@@ -377,10 +377,311 @@
           </div>
         </div>
       </section>
-      <section id="catalog"></section>
-      <section id="form"></section>
+      <section class="scroll-mt-20 bg-[#F4ECE1] py-16 text-espresso md:py-24" id="catalog" aria-labelledby="catalog-title">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+            <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-espresso/10 bg-white/75 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-espresso/70 shadow-sm backdrop-blur-md sm:text-sm">
+              <span class="h-1.5 w-1.5 rounded-full bg-terracotta" aria-hidden="true"></span>
+              СВЕЖАЯ ОБЖАРКА · ЛЮБИМЫЕ ВКУСЫ
+            </span>
+            <h2 class="font-heading text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl" id="catalog-title">Хиты этой партии</h2>
+            <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-espresso/70 sm:text-lg">Самое заказываемое за последний месяц. Обжарено на этой неделе — успевайте.</p>
+          </div>
+
+          <div class="grid grid-cols-1 auto-rows-fr items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Эфиопия Иргачефф" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-terracotta px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ХИТ</span>
+                  <span class="absolute bottom-4 right-4 rounded-full border border-white/50 bg-cream/90 px-3 py-1.5 text-xs font-semibold text-espresso shadow-lg backdrop-blur-md">Обжарено на этой неделе</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">Спешелти · Эфиопия</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Эфиопия Иргачефф</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">Жасмин, бергамот, персик; яркая кислотность — эталон фильтра</p>
+                  <div class="mt-4 space-y-2" aria-label="Профиль кофе">
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="4 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">750 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Эфиопия Иргачефф" data-price="750 ₽">Заказать</button>
+              </div>
+            </article>
+
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Бразилия Серрадо" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-espresso px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ВЫГОДНО</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">Спешелти · Бразилия</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Бразилия Серрадо</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">Молочный шоколад, фундук, карамель — идеальна для эспрессо и с молоком</p>
+                  <div class="mt-4 space-y-2" aria-label="Профиль кофе">
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="2 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="4 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">590 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Бразилия Серрадо" data-price="590 ₽">Заказать</button>
+              </div>
+            </article>
+
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85" alt="Дрип-сет с кофе разных сортов" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-terracotta px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ХИТ</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">10 пакетов × 12 г</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Дрип-сет «Неделя без кофейни»</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">10 пакетов, 5 сортов — от ягодной Эфиопии до шоколадной Бразилии; каждое утро — новый вкус</p>
+                  <div class="mt-4 space-y-2" aria-label="Профиль кофе">
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">850 ₽</p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Дрип-сет «Неделя без кофейни»" data-price="850 ₽">Заказать</button>
+              </div>
+            </article>
+
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=85" alt="Стартовый набор кофе из трёх стран" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-[#D9A441] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-espresso shadow-lg">ДЛЯ НОВИЧКОВ</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">3 × 150 г</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Стартовый набор «Три страны»</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">Эфиопия + Бразилия + Кения по 150 г — найдите свой профиль вкуса за неделю</p>
+                  <div class="mt-4 space-y-2" aria-label="Профиль кофе">
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">1 190 ₽</p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Стартовый набор «Три страны»" data-price="1 190 ₽">Заказать</button>
+              </div>
+            </article>
+
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Базиликовый чизкейк с клубникой" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-green px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">NEW</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">Своя пекарня</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Базиликовый чизкейк с клубникой</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">Сливочный чизкейк, базиликовое пюре, свежая клубника — неожиданно и очень по-нашему</p>
+                  <p class="mt-4 text-xs font-medium text-espresso/60">120 г</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">380 ₽</p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Базиликовый чизкейк с клубникой" data-price="380 ₽">Заказать</button>
+              </div>
+            </article>
+
+            <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
+              <div>
+                <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85" alt="Подарочный бокс с дрип-пакетами и чашкой" loading="lazy">
+                  <span class="absolute left-4 top-4 rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-espresso shadow-lg">ПОДАРОК</span>
+                </div>
+                <div class="p-5 sm:p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-terracotta">10 шт + чашка 250 мл</p>
+                  <h3 class="mt-2 font-heading text-lg font-bold leading-snug sm:text-xl">Подарочный бокс «Партия на подарок»</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-espresso/70">10 дрип-пакетов + керамическая чашка ручной работы + открытка с датой ближайшей обжарки</p>
+                  <div class="mt-4 space-y-2" aria-label="Профиль кофе">
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                    <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
+                <p class="font-heading text-xl font-bold text-terracotta">2 490 ₽</p>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Подарочный бокс «Партия на подарок»" data-price="2 490 ₽">Заказать</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 rounded-2xl border border-espresso/10 bg-white/70 px-5 py-5 text-center shadow-sm backdrop-blur-md sm:flex-row sm:gap-5 sm:px-7">
+            <i class="h-5 w-5 shrink-0 text-terracotta" data-lucide="package-check" stroke-width="1.75" aria-hidden="true"></i>
+            <p class="text-sm font-semibold leading-relaxed text-espresso/80 sm:text-base">Доставка за 2 часа · От 2 000 ₽ — бесплатно · Помол в подарок</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative isolate scroll-mt-20 overflow-hidden bg-gradient-to-br from-terracotta via-[#D45725] to-terracotta-hover py-16 text-cream md:py-24" id="form" aria-labelledby="form-title">
+        <div class="pointer-events-none absolute -left-40 top-0 -z-10 h-96 w-96 rounded-full bg-cream/10 blur-3xl" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -bottom-48 right-0 -z-10 h-96 w-96 rounded-full bg-espresso/20 blur-3xl" aria-hidden="true"></div>
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 md:gap-16 lg:grid-cols-2 lg:px-8">
+          <div class="relative">
+            <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cream/90 backdrop-blur-md">Ваш кофе начинается с трёх вопросов</span>
+            <h2 class="max-w-2xl font-heading text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl" id="form-title">Не знаете, какой сорт ваш? Подберём за 3 вопроса — и подарим первый дрип</h2>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">Оставьте телефон — шеф-бариста задаст 3 коротких вопроса и подберёт кофе под ваш вкус и способ заваривания. Первому заказу — скидка 15%, в каждый первый заказ — пробник дрип-пакета в подарок.</p>
+            <div class="mt-8 inline-flex rotate-[-5deg] items-center gap-3 rounded-xl border border-gold/50 bg-gold px-5 py-3 text-sm font-extrabold text-espresso shadow-[0_16px_40px_rgba(43,26,15,0.3)] transition-transform duration-300 ease-out hover:rotate-0">
+              <i class="h-5 w-5" data-lucide="gift" stroke-width="1.75" aria-hidden="true"></i>
+              + пробник в подарок
+            </div>
+          </div>
+
+          <div class="rounded-[20px] border border-espresso/10 bg-cream p-6 text-espresso shadow-[0_30px_90px_rgba(35,14,4,0.3)] sm:p-8">
+            <div class="mb-5 hidden items-start justify-between gap-3 rounded-xl border border-terracotta/20 bg-terracotta/5 p-4" id="selected-product" aria-live="polite">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
+                  <i class="h-4 w-4" data-lucide="shopping-bag" stroke-width="1.75" aria-hidden="true"></i>
+                </span>
+                <p class="text-sm leading-relaxed text-espresso"><span class="block text-xs font-semibold uppercase tracking-wide text-espresso/55">Выбранный товар</span><span class="mt-1 block font-bold" id="selected-product-name"></span></p>
+              </div>
+              <button class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-espresso/55 transition-all duration-300 ease-out hover:bg-espresso/10 hover:text-espresso" type="button" id="clear-selected-product" aria-label="Сбросить выбранный товар">
+                <i class="h-4 w-4" data-lucide="x" stroke-width="1.75" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <form id="lead-form" class="space-y-5 transition-opacity duration-300 ease-out">
+              <label class="block">
+                <span class="mb-2 block text-sm font-semibold">Имя</span>
+                <input class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" type="text" name="name" placeholder="Как к вам обращаться?" autocomplete="name" required>
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-semibold">Телефон</span>
+                <input class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" id="phone-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" maxlength="18" aria-describedby="phone-hint" required>
+                <span class="mt-1.5 block text-xs text-espresso/55" id="phone-hint">Формат: +7 (XXX) XXX-XX-XX</span>
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-semibold">Как вы готовите кофе дома?</span>
+                <select class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" name="brewing-method" required>
+                  <option value="" selected disabled>Выберите способ приготовления</option>
+                  <option>В кофемашине (эспрессо дома)</option>
+                  <option>Воронка, гейзер, фильтр</option>
+                  <option>Турка, френч-пресс, чашка</option>
+                  <option>Пока никак — хочу, чтобы было просто (дрипы)</option>
+                </select>
+              </label>
+              <button class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-espresso px-5 text-center text-sm font-bold text-cream shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#3B261A] hover:shadow-xl active:translate-y-0 sm:text-base" type="submit">
+                Получить подбор и скидку 15%
+                <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
+              </button>
+              <p class="text-center text-xs leading-relaxed text-espresso/55">Ответим в течение 15 минут в рабочее время. Никакого спама — только ваш кофе.</p>
+            </form>
+
+            <div class="hidden text-center transition-opacity duration-300 ease-out" id="thank-you" aria-live="polite" tabindex="-1">
+              <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green/10 text-green">
+                <i class="h-7 w-7" data-lucide="check" stroke-width="1.75" aria-hidden="true"></i>
+              </span>
+              <h3 class="mt-5 font-heading text-xl font-bold sm:text-2xl">Готово!</h3>
+              <p class="mt-3 text-sm leading-relaxed text-espresso/70">Позвоним в течение 15 минут. А пока — промокод DRIPO15 на скидку</p>
+              <div class="mx-auto mt-5 flex max-w-sm items-center gap-2 rounded-xl border border-espresso/10 bg-white p-2">
+                <span class="flex-1 font-heading text-lg font-bold tracking-[0.16em] text-terracotta" id="promo-code">DRIPO15</span>
+                <button class="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-espresso px-3 text-sm font-semibold text-cream transition-all duration-300 ease-out hover:bg-terracotta" type="button" id="copy-promo">
+                  <i class="h-4 w-4" data-lucide="copy" stroke-width="1.75" aria-hidden="true"></i>
+                  Копировать
+                </button>
+              </div>
+              <p class="mt-2 min-h-5 text-xs text-espresso/60" id="copy-status" aria-live="polite"></p>
+              <button class="mt-5 inline-flex min-h-[48px] items-center justify-center rounded-xl border border-espresso/15 px-5 text-sm font-semibold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" id="new-request">Отправить ещё заявку</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer id="footer"></footer>
+    <footer class="scroll-mt-20 bg-footer py-14 text-cream md:py-16" id="footer">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 border-b border-cream/10 pb-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div class="lg:col-span-1">
+            <a class="inline-flex items-center gap-3 rounded-lg transition-all duration-300 ease-out hover:opacity-80" href="#hero" aria-label="Свежая Партия — на главную">
+              <svg class="h-11 w-11 text-terracotta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M18 16c-4-3-3-7 0-10m7 10c-4-4-2-8 1-11m6 12c-3-4 0-8 3-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="m12 20 4 22h17l4-22-4-3H16l-4 3Z" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="m16 22 3 17h11l3-17H16Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M24.5 25c-4 2-4 7 0 10 4-3 4-8 0-10Zm0 1v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              <span>
+                <span class="block font-heading text-base font-bold">Свежая Партия</span>
+                <span class="mt-1 block text-[9px] font-semibold tracking-[0.28em] text-terracotta">FRESH BATCH</span>
+              </span>
+            </a>
+            <p class="mt-5 max-w-xs text-sm leading-relaxed text-cream/65">Кофейня-обжарка «Свежая Партия»</p>
+          </div>
+
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta">Где мы</h2>
+            <p class="mt-4 text-sm leading-relaxed text-cream/75">г. [город], ул. [адрес] — центр, свой ростер можно посмотреть вживую</p>
+            <p class="mt-2 text-sm leading-relaxed text-cream/60">Ориентир: [метро / ориентир]</p>
+            <div class="relative mt-5 h-32 overflow-hidden rounded-2xl border border-cream/10 bg-[#302014]" aria-label="Схема расположения кофейни" role="img">
+              <div class="absolute inset-0 opacity-30" aria-hidden="true">
+                <span class="absolute left-[-10%] top-1/3 h-px w-[120%] rotate-[-14deg] bg-cream/60"></span>
+                <span class="absolute left-[-10%] top-2/3 h-px w-[120%] rotate-[12deg] bg-cream/60"></span>
+                <span class="absolute left-1/3 top-[-20%] h-[140%] w-px rotate-[18deg] bg-cream/60"></span>
+                <span class="absolute left-2/3 top-[-20%] h-[140%] w-px rotate-[-12deg] bg-cream/60"></span>
+              </div>
+              <div class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-terracotta text-cream shadow-[0_0_24px_rgba(226,98,43,0.5)]">
+                  <i class="h-4 w-4" data-lucide="map-pin" stroke-width="1.75" aria-hidden="true"></i>
+                </span>
+                <span class="mt-1 rounded-full bg-footer/80 px-2 py-0.5 text-[10px] font-semibold text-cream/85">Свой ростер</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta">Когда</h2>
+            <ul class="mt-4 space-y-3 text-sm text-cream/75">
+              <li class="flex items-start gap-3"><i class="mt-0.5 h-4 w-4 shrink-0 text-terracotta" data-lucide="clock-3" stroke-width="1.75" aria-hidden="true"></i><span>Пн–Пт: 8:00–21:00</span></li>
+              <li class="flex items-start gap-3"><i class="mt-0.5 h-4 w-4 shrink-0 text-terracotta" data-lucide="clock-3" stroke-width="1.75" aria-hidden="true"></i><span>Сб–Вс: 9:00–21:00</span></li>
+              <li class="flex items-start gap-3 leading-relaxed"><i class="mt-0.5 h-4 w-4 shrink-0 text-terracotta" data-lucide="flame" stroke-width="1.75" aria-hidden="true"></i><span>Обжарка — вторник и пятница с 10:00 (можно прийти и посмотреть, как жарят ваш кофе)</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta">Связаться</h2>
+            <ul class="mt-4 space-y-3 text-sm text-cream/75">
+              <li>Телефон: <a class="transition-all duration-300 ease-out hover:text-terracotta" href="tel:+7XXXXXXXXXX">+7 [XXX] XXX-XX-XX</a></li>
+              <li>WhatsApp / Telegram: <a class="transition-all duration-300 ease-out hover:text-terracotta" href="https://t.me/" target="_blank" rel="noreferrer">заказ и вопросы</a></li>
+              <li>Почта: <a class="transition-all duration-300 ease-out hover:text-terracotta" href="mailto:hi@freshbatch.ru">hi@freshbatch.ru</a></li>
+            </ul>
+            <p class="mt-5 text-xs leading-relaxed text-cream/55">Дрип-обзоры, анонсы новых лотов</p>
+            <div class="mt-3 flex gap-2">
+              <a class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta hover:bg-terracotta hover:shadow-lg" href="https://t.me/" target="_blank" rel="noreferrer" aria-label="Telegram"><i class="h-4 w-4" data-lucide="send" stroke-width="1.75" aria-hidden="true"></i></a>
+              <a class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta hover:bg-terracotta hover:shadow-lg" href="https://vk.com/" target="_blank" rel="noreferrer" aria-label="VK"><i class="h-4 w-4" data-lucide="users" stroke-width="1.75" aria-hidden="true"></i></a>
+              <a class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta hover:bg-terracotta hover:shadow-lg" href="https://dzen.ru/" target="_blank" rel="noreferrer" aria-label="Дзен"><i class="h-4 w-4" data-lucide="book-open" stroke-width="1.75" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-7 flex flex-col items-start justify-between gap-4 rounded-2xl border border-cream/10 bg-cream/[0.04] p-5 sm:flex-row sm:items-center sm:p-6">
+          <div>
+            <p class="font-semibold text-cream">Анонсы свежих партий — раз в неделю в Telegram</p>
+            <p class="mt-1 text-sm text-cream/60">Дрип-обзоры, анонсы новых лотов</p>
+          </div>
+          <a class="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-terracotta px-5 text-sm font-bold text-cream shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-xl active:translate-y-0" href="https://t.me/" target="_blank" rel="noreferrer">
+            <i class="h-4 w-4" data-lucide="send" stroke-width="1.75" aria-hidden="true"></i>
+            Telegram
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-2 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 «Свежая Партия» — кофейня-обжарка.</p>
+          <p>Обжариваем по вторникам и пятницам.</p>
+        </div>
+      </div>
+    </footer>
 
     <a class="fixed bottom-4 left-4 right-4 z-40 inline-flex min-h-[52px] items-center justify-center rounded-xl bg-terracotta px-5 text-sm font-bold text-cream shadow-[0_12px_36px_rgba(43,26,15,0.35)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 md:hidden" href="#catalog">
       Выбрать кофе со скидкой 15%
@@ -438,6 +739,143 @@
 
         counterObserver.observe(whySection);
       }
+
+      const leadForm = document.querySelector("#lead-form");
+      const phoneInput = document.querySelector("#phone-input");
+      const selectedProductPanel = document.querySelector("#selected-product");
+      const selectedProductName = document.querySelector("#selected-product-name");
+      const thankYouPanel = document.querySelector("#thank-you");
+
+      function formatPhoneNumber(value) {
+        let digits = value.replace(/\D/g, "");
+
+        if (digits.startsWith("7") || digits.startsWith("8")) {
+          digits = digits.slice(1);
+        }
+
+        digits = digits.slice(0, 10);
+
+        if (!digits) {
+          return "";
+        }
+
+        let formatted = `+7 (${digits.slice(0, 3)}`;
+        if (digits.length >= 3) {
+          formatted += ")";
+        }
+        if (digits.length > 3) {
+          formatted += ` ${digits.slice(3, 6)}`;
+        }
+        if (digits.length >= 6) {
+          formatted += `-${digits.slice(6, 8)}`;
+        }
+        if (digits.length >= 8) {
+          formatted += `-${digits.slice(8, 10)}`;
+        }
+
+        return formatted;
+      }
+
+      function getPhoneDigits(value) {
+        let digits = value.replace(/\D/g, "");
+
+        if (digits.startsWith("7") || digits.startsWith("8")) {
+          digits = digits.slice(1);
+        }
+
+        return digits;
+      }
+
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = formatPhoneNumber(phoneInput.value);
+        phoneInput.setCustomValidity(
+          getPhoneDigits(phoneInput.value).length === 10 || phoneInput.value === ""
+            ? ""
+            : "Введите телефон полностью: +7 (XXX) XXX-XX-XX."
+        );
+      });
+
+      document.querySelectorAll("[data-order-product]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedProductName.textContent = `${button.dataset.name} — ${button.dataset.price}`;
+          selectedProductPanel.classList.remove("hidden");
+          document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      document.querySelector("#clear-selected-product").addEventListener("click", () => {
+        selectedProductName.textContent = "";
+        selectedProductPanel.classList.add("hidden");
+      });
+
+      leadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!leadForm.reportValidity()) {
+          return;
+        }
+
+        leadForm.classList.add("pointer-events-none", "opacity-0");
+        window.setTimeout(() => {
+          leadForm.classList.add("hidden");
+          leadForm.classList.remove("pointer-events-none", "opacity-0");
+          selectedProductPanel.classList.add("hidden");
+          thankYouPanel.classList.add("opacity-0");
+          thankYouPanel.classList.remove("hidden");
+          window.requestAnimationFrame(() => {
+            thankYouPanel.classList.remove("opacity-0");
+            thankYouPanel.focus();
+          });
+        }, 300);
+      });
+
+      document.querySelector("#copy-promo").addEventListener("click", async () => {
+        const copyStatus = document.querySelector("#copy-status");
+        const promoCode = document.querySelector("#promo-code").textContent;
+
+        try {
+          await navigator.clipboard.writeText(promoCode);
+          copyStatus.textContent = "Промокод скопирован.";
+        } catch (error) {
+          const temporaryInput = document.createElement("textarea");
+          temporaryInput.value = promoCode;
+          temporaryInput.setAttribute("readonly", "");
+          temporaryInput.style.position = "fixed";
+          temporaryInput.style.opacity = "0";
+          document.body.append(temporaryInput);
+          temporaryInput.select();
+
+          try {
+            if (!document.execCommand("copy")) {
+              throw new Error("Команда копирования недоступна.");
+            }
+            copyStatus.textContent = "Промокод скопирован.";
+          } catch (fallbackError) {
+            copyStatus.textContent = "Не удалось скопировать. Выделите промокод DRIPO15 и скопируйте его вручную.";
+          } finally {
+            temporaryInput.remove();
+          }
+        }
+      });
+
+      document.querySelector("#new-request").addEventListener("click", () => {
+        leadForm.reset();
+        phoneInput.setCustomValidity("");
+        selectedProductName.textContent = "";
+        selectedProductPanel.classList.add("hidden");
+        document.querySelector("#copy-status").textContent = "";
+        thankYouPanel.classList.add("opacity-0", "pointer-events-none");
+        window.setTimeout(() => {
+          thankYouPanel.classList.add("hidden");
+          thankYouPanel.classList.remove("opacity-0", "pointer-events-none");
+          leadForm.classList.add("opacity-0");
+          leadForm.classList.remove("hidden");
+          window.requestAnimationFrame(() => {
+            leadForm.classList.remove("opacity-0");
+            leadForm.querySelector("[name='name']").focus();
+          });
+        }, 300);
+      });
 
       const menuToggle = document.querySelector("[data-menu-toggle]");
       const mobileNavigation = document.querySelector("#mobile-navigation");
