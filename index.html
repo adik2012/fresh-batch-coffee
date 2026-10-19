@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Свежая Партия — кофейня-обжарка: спешелти-кофе, дрипы, десерты с доставкой за 2 часа</title>
+    <meta name="description" content="Обжариваем спешелти-зерно 84+ баллов каждый вторник и пятницу. Доставка зерна, дрип-пакетов и десертов за 2 часа. Гарантия вкуса: заменим или вернём деньги. Скидка 15% на первый заказ">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FAF5EE",
+              espresso: "#2B1A0F",
+              footer: "#241407",
+              terracotta: {
+                DEFAULT: "#E2622B",
+                hover: "#C74E1F"
+              },
+              green: "#6B8F5E",
+              gold: "#D9A441"
+            },
+            fontFamily: {
+              heading: ["Unbounded", "sans-serif"],
+              body: ["Golos Text", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      @keyframes batch-marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      .batch-marquee-track {
+        animation: batch-marquee 32s linear infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden bg-cream pb-24 font-body text-espresso antialiased md:pb-0">
+    <header class="sticky top-0 z-50 border-b border-[#FAF5EE]/10 bg-[#2B1A0F]/85 text-cream shadow-[0_12px_32px_rgba(24,12,5,0.18)] backdrop-blur-md">
+      <div class="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a class="group flex shrink-0 items-center gap-3 rounded-lg transition-all duration-300 ease-out" href="#hero" aria-label="Свежая Партия — на главную">
+          <svg class="h-11 w-11 text-terracotta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M18 16c-4-3-3-7 0-10m7 10c-4-4-2-8 1-11m6 12c-3-4 0-8 3-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="m12 20 4 22h17l4-22-4-3H16l-4 3Z" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="m16 22 3 17h11l3-17H16Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M24.5 25c-4 2-4 7 0 10 4-3 4-8 0-10Zm0 1v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span class="leading-tight">
+            <span class="block font-heading text-sm tracking-tight text-cream sm:text-base">Свежая Партия</span>
+            <span class="mt-1 block text-[9px] font-semibold tracking-[0.28em] text-terracotta">FRESH BATCH</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-5 text-sm font-medium text-cream/75 lg:flex xl:gap-7" aria-label="Основная навигация">
+          <a class="transition-all duration-300 ease-out hover:text-cream" href="#catalog">Зерно</a>
+          <a class="transition-all duration-300 ease-out hover:text-cream" href="#catalog">Дрипы</a>
+          <a class="transition-all duration-300 ease-out hover:text-cream" href="#categories">Десерты</a>
+          <a class="transition-all duration-300 ease-out hover:text-cream" href="#form">Доставка</a>
+          <a class="transition-all duration-300 ease-out hover:text-cream" href="#why">О нас</a>
+        </nav>
+
+        <div class="hidden shrink-0 items-center gap-4 lg:flex">
+          <a class="whitespace-nowrap text-sm font-semibold text-cream/85 transition-all duration-300 ease-out hover:text-terracotta" href="tel:+7XXXXXXXXXX">+7 [XXX] XXX-XX-XX</a>
+          <a class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-cream/20 bg-cream/5 px-4 text-sm font-semibold text-cream shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta/70 hover:bg-cream/10 hover:shadow-lg active:translate-y-0" href="#form">Собрать заказ</a>
+        </div>
+
+        <button class="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:border-terracotta/60 hover:bg-cream/10 lg:hidden" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" data-menu-open-icon>
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+          <svg class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" data-menu-close-icon>
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="hidden border-t border-cream/10 bg-espresso/95 px-4 pb-5 pt-3 shadow-xl backdrop-blur-md sm:px-6 lg:hidden" id="mobile-navigation" aria-label="Мобильная навигация">
+        <div class="mx-auto flex max-w-7xl flex-col">
+          <a class="rounded-lg px-3 py-3 text-sm font-medium text-cream/85 transition-all duration-300 ease-out hover:bg-cream/5 hover:text-cream" href="#catalog">Зерно</a>
+          <a class="rounded-lg px-3 py-3 text-sm font-medium text-cream/85 transition-all duration-300 ease-out hover:bg-cream/5 hover:text-cream" href="#catalog">Дрипы</a>
+          <a class="rounded-lg px-3 py-3 text-sm font-medium text-cream/85 transition-all duration-300 ease-out hover:bg-cream/5 hover:text-cream" href="#categories">Десерты</a>
+          <a class="rounded-lg px-3 py-3 text-sm font-medium text-cream/85 transition-all duration-300 ease-out hover:bg-cream/5 hover:text-cream" href="#form">Доставка</a>
+          <a class="rounded-lg px-3 py-3 text-sm font-medium text-cream/85 transition-all duration-300 ease-out hover:bg-cream/5 hover:text-cream" href="#why">О нас</a>
+          <a class="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-terracotta px-4 text-sm font-bold text-cream shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-xl active:translate-y-0" href="#form">Собрать заказ</a>
+          <a class="mt-4 px-3 text-sm font-semibold text-cream/75 transition-all duration-300 ease-out hover:text-terracotta" href="tel:+7XXXXXXXXXX">+7 [XXX] XXX-XX-XX</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative isolate scroll-mt-20 overflow-hidden bg-espresso text-cream" id="hero" aria-labelledby="hero-title">
+        <div class="absolute inset-0 -z-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1920&q=85')" aria-hidden="true"></div>
+        <div class="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(43,26,15,0.97)_0%,rgba(43,26,15,0.88)_48%,rgba(43,26,15,0.73)_100%)]" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -left-40 top-12 -z-10 h-96 w-96 rounded-full bg-terracotta/10 blur-3xl" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -right-32 bottom-10 -z-10 h-80 w-80 rounded-full bg-gold/10 blur-3xl" aria-hidden="true"></div>
+
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-20">
+          <div class="relative z-10 lg:col-span-7">
+            <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/[0.08] px-4 py-2 text-xs font-semibold tracking-wide text-cream/90 shadow-[0_8px_24px_rgba(12,7,3,0.16)] backdrop-blur-md sm:text-sm">
+              <span class="h-2 w-2 rounded-full bg-terracotta shadow-[0_0_12px_rgba(226,98,43,0.8)]" aria-hidden="true"></span>
+              Своя обжарка · Спешелти 84+ баллов
+            </div>
+
+            <h1 class="max-w-3xl font-heading text-3xl font-bold leading-[1.1] tracking-tight text-cream sm:text-5xl lg:text-[64px]" id="hero-title">
+              <span class="text-terracotta">Дата обжарки</span> вместо «даты упаковки»
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg">
+              Обжариваем спешелти-зерно 84+ баллов каждый вторник и пятницу и привозим за 2 часа — вместе с дрип-пакетами и десертами из нашей пекарни. Не понравился вкус? Заменим бесплатно.
+            </p>
+
+            <ul class="mt-8 grid gap-3 sm:grid-cols-3" aria-label="Наши преимущества">
+              <li class="flex h-full items-start gap-3 rounded-2xl border border-cream/10 bg-cream/[0.07] p-4 shadow-[0_14px_34px_rgba(12,7,3,0.18)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-terracotta/35">
+                <i class="mt-0.5 h-5 w-5 shrink-0 text-terracotta" data-lucide="flame" stroke-width="1.75" aria-hidden="true"></i>
+                <span class="text-sm leading-relaxed text-cream/75"><strong class="mb-1 block text-sm font-bold text-cream">Обжарка вт и пт</strong>Отправляем зерно в день обжарки, дата — на каждой пачке</span>
+              </li>
+              <li class="flex h-full items-start gap-3 rounded-2xl border border-cream/10 bg-cream/[0.07] p-4 shadow-[0_14px_34px_rgba(12,7,3,0.18)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-terracotta/35">
+                <i class="mt-0.5 h-5 w-5 shrink-0 text-terracotta" data-lucide="shield-check" stroke-width="1.75" aria-hidden="true"></i>
+                <span class="text-sm leading-relaxed text-cream/75"><strong class="mb-1 block text-sm font-bold text-cream">Гарантия вкуса</strong>Не зашёл сорт: заменим или вернём деньги</span>
+              </li>
+              <li class="flex h-full items-start gap-3 rounded-2xl border border-cream/10 bg-cream/[0.07] p-4 shadow-[0_14px_34px_rgba(12,7,3,0.18)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-terracotta/35">
+                <i class="mt-0.5 h-5 w-5 shrink-0 text-terracotta" data-lucide="clock" stroke-width="1.75" aria-hidden="true"></i>
+                <span class="text-sm leading-relaxed text-cream/75"><strong class="mb-1 block text-sm font-bold text-cream">Доставка за 2 часа</strong>Кофе, дрипы и десерты; от 2 000 ₽ — бесплатно</span>
+              </li>
+            </ul>
+
+            <div class="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+              <a class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-terracotta px-6 py-3 text-center text-sm font-bold text-cream shadow-[0_12px_30px_rgba(226,98,43,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 sm:w-auto sm:text-base" href="#catalog">
+                Выбрать кофе со скидкой 15%
+                <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
+              </a>
+              <a class="group text-sm font-semibold leading-relaxed text-cream/75 transition-all duration-300 ease-out hover:text-cream" href="#form">
+                Не разбираетесь в сортах? Подберём за 3 вопроса <span class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-lg lg:col-span-5 lg:max-w-none">
+            <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-terracotta/25 via-transparent to-gold/20 blur-2xl" aria-hidden="true"></div>
+            <div class="group relative h-[400px] overflow-hidden rounded-[2rem] border border-cream/20 bg-espresso shadow-[0_32px_90px_rgba(10,5,2,0.48)] sm:h-[500px] lg:h-[560px]">
+              <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=85" alt="Свежеобжаренные кофейные зёрна" loading="eager">
+              <div class="absolute inset-0 bg-gradient-to-t from-espresso/95 via-espresso/15 to-espresso/10" aria-hidden="true"></div>
+              <div class="absolute left-5 top-5 inline-flex max-w-[calc(100%-2.5rem)] items-center gap-2 rounded-full border border-cream/20 bg-espresso/65 px-4 py-2.5 text-xs font-semibold text-cream shadow-lg backdrop-blur-md sm:left-7 sm:top-7 sm:text-sm">
+                <span class="h-2 w-2 shrink-0 rounded-full bg-terracotta" aria-hidden="true"></span>
+                Ближайшая обжарка: вторник и пятница
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cream/70">Малые партии · Бережная обжарка</p>
+                <p class="mt-2 max-w-xs font-heading text-xl leading-snug text-cream sm:text-2xl">Свежесть, которую видно по дате</p>
+              </div>
+              <div class="absolute bottom-24 right-4 flex h-32 w-32 rotate-12 flex-col items-center justify-center rounded-full border-2 border-dashed border-terracotta bg-cream text-center text-[10px] font-extrabold leading-tight tracking-[0.12em] text-espresso shadow-[0_12px_36px_rgba(14,7,3,0.4)] ring-4 ring-cream/20 sm:bottom-28 sm:right-7 sm:h-36 sm:w-36 sm:text-[11px]">
+                <span class="text-terracotta">ОБЖАРКА</span>
+                <span class="my-1 text-xs sm:text-sm">ВТ И ПТ</span>
+                <span class="h-px w-10 bg-terracotta/60" aria-hidden="true"></span>
+                <span class="mt-1">100% СВЕЖЕСТЬ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-hidden border-y border-cream/10 bg-terracotta py-3.5 text-cream shadow-[0_12px_40px_rgba(17,8,2,0.22)]">
+          <div class="batch-marquee-track flex w-max" aria-label="Новая партия — каждую пятницу. Доставка за 2 часа. Помол под ваш способ в подарок. Гарантия вкуса 100%.">
+            <div class="flex shrink-0 items-center gap-5 pr-5 text-xs font-bold tracking-wide sm:gap-8 sm:pr-8 sm:text-sm" aria-hidden="true">
+              <span>Новая партия — каждую пятницу</span><span class="text-cream/65">✦</span>
+              <span>Доставка за 2 часа</span><span class="text-cream/65">✦</span>
+              <span>Помол под ваш способ в подарок</span><span class="text-cream/65">✦</span>
+              <span>Гарантия вкуса 100%</span><span class="text-cream/65">✦</span>
+            </div>
+            <div class="flex shrink-0 items-center gap-5 pr-5 text-xs font-bold tracking-wide sm:gap-8 sm:pr-8 sm:text-sm" aria-hidden="true">
+              <span>Новая партия — каждую пятницу</span><span class="text-cream/65">✦</span>
+              <span>Доставка за 2 часа</span><span class="text-cream/65">✦</span>
+              <span>Помол под ваш способ в подарок</span><span class="text-cream/65">✦</span>
+              <span>Гарантия вкуса 100%</span><span class="text-cream/65">✦</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="why"></section>
+      <section id="categories"></section>
+      <section id="catalog"></section>
+      <section id="form"></section>
+    </main>
+    <footer id="footer"></footer>
+
+    <a class="fixed bottom-4 left-4 right-4 z-40 inline-flex min-h-[52px] items-center justify-center rounded-xl bg-terracotta px-5 text-sm font-bold text-cream shadow-[0_12px_36px_rgba(43,26,15,0.35)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 md:hidden" href="#catalog">
+      Выбрать кофе со скидкой 15%
+      <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
+    </a>
+
+    <script>
+      lucide.createIcons({ attrs: { "stroke-width": 1.75 } });
+
+      const menuToggle = document.querySelector("[data-menu-toggle]");
+      const mobileNavigation = document.querySelector("#mobile-navigation");
+      const menuOpenIcon = document.querySelector("[data-menu-open-icon]");
+      const menuCloseIcon = document.querySelector("[data-menu-close-icon]");
+
+      function setMobileMenuOpen(isOpen) {
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+        mobileNavigation.classList.toggle("hidden", !isOpen);
+        menuOpenIcon.classList.toggle("hidden", isOpen);
+        menuCloseIcon.classList.toggle("hidden", !isOpen);
+      }
+
+      menuToggle.addEventListener("click", () => {
+        setMobileMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+      });
+
+      mobileNavigation.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          setMobileMenuOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+          setMobileMenuOpen(false);
+          menuToggle.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
