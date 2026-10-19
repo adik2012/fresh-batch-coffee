@@ -745,16 +745,21 @@
       const selectedProductPanel = document.querySelector("#selected-product");
       const selectedProductName = document.querySelector("#selected-product-name");
       const thankYouPanel = document.querySelector("#thank-you");
+      let phoneDigits = "";
 
-      function formatPhoneNumber(value) {
+      function normalizePhoneDigits(value, includesCountryCode = false) {
         let digits = value.replace(/\D/g, "");
 
-        if (digits.startsWith("7") || digits.startsWith("8")) {
+        if (includesCountryCode && digits.startsWith("7")) {
+          digits = digits.slice(1);
+        } else if (digits.length > 10 && (digits.startsWith("7") || digits.startsWith("8"))) {
           digits = digits.slice(1);
         }
 
-        digits = digits.slice(0, 10);
+        return digits.slice(0, 10);
+      }
 
+      function formatPhoneNumber(digits) {
         if (!digits) {
           return "";
         }
@@ -776,23 +781,102 @@
         return formatted;
       }
 
-      function getPhoneDigits(value) {
-        let digits = value.replace(/\D/g, "");
-
-        if (digits.startsWith("7") || digits.startsWith("8")) {
-          digits = digits.slice(1);
-        }
-
-        return digits;
+      function getPhoneDigitOffset(position) {
+        const digitsBeforeCursor = phoneInput.value.slice(0, position).replace(/\D/g, "").length;
+        const hasCountryPrefix = phoneInput.value.startsWith("+7");
+        return Math.max(0, digitsBeforeCursor - (hasCountryPrefix ? 1 : 0));
       }
 
-      phoneInput.addEventListener("input", () => {
-        phoneInput.value = formatPhoneNumber(phoneInput.value);
+      function getFormattedCaretPosition(digitOffset) {
+        if (digitOffset <= 0) {
+          return phoneDigits.length > 0 ? 4 : 0;
+        }
+
+        let digitsSeen = 0;
+        for (let index = 0; index < phoneInput.value.length; index += 1) {
+          if (/\d/.test(phoneInput.value[index]) && ++digitsSeen === digitOffset + 1) {
+            return index + 1;
+          }
+        }
+
+        return phoneInput.value.length;
+      }
+
+      function updatePhoneInput(caretPosition = phoneDigits.length) {
+        phoneInput.value = formatPhoneNumber(phoneDigits);
         phoneInput.setCustomValidity(
-          getPhoneDigits(phoneInput.value).length === 10 || phoneInput.value === ""
+          phoneDigits.length === 10 || phoneDigits.length === 0
             ? ""
             : "Введите телефон полностью: +7 (XXX) XXX-XX-XX."
         );
+        const formattedCaretPosition = getFormattedCaretPosition(caretPosition);
+        phoneInput.setSelectionRange(formattedCaretPosition, formattedCaretPosition);
+      }
+
+      function insertPhoneDigits(value) {
+        const start = getPhoneDigitOffset(phoneInput.selectionStart);
+        const end = getPhoneDigitOffset(phoneInput.selectionEnd);
+        const insertedDigits = value.replace(/\D/g, "");
+
+        if (!insertedDigits) {
+          return;
+        }
+
+        phoneDigits = normalizePhoneDigits(
+          phoneDigits.slice(0, start) + insertedDigits + phoneDigits.slice(end)
+        );
+        updatePhoneInput(start + insertedDigits.length);
+      }
+
+      function deletePhoneDigits(backward) {
+        let start = getPhoneDigitOffset(phoneInput.selectionStart);
+        let end = getPhoneDigitOffset(phoneInput.selectionEnd);
+
+        if (start === end) {
+          if (backward) {
+            start = Math.max(0, start - 1);
+          } else {
+            end = Math.min(phoneDigits.length, end + 1);
+          }
+        }
+
+        if (start === end) {
+          return;
+        }
+
+        phoneDigits = phoneDigits.slice(0, start) + phoneDigits.slice(end);
+        updatePhoneInput(start);
+      }
+
+      phoneInput.addEventListener("beforeinput", (event) => {
+        if (event.inputType === "insertText" && event.data) {
+          event.preventDefault();
+          insertPhoneDigits(event.data);
+        } else if (event.inputType === "deleteContentBackward" || event.inputType === "deleteContentForward") {
+          event.preventDefault();
+          deletePhoneDigits(event.inputType === "deleteContentBackward");
+        }
+      });
+
+      phoneInput.addEventListener("keydown", (event) => {
+        if (event.key === "Backspace" || event.key === "Delete") {
+          event.preventDefault();
+          deletePhoneDigits(event.key === "Backspace");
+        }
+      });
+
+      phoneInput.addEventListener("paste", (event) => {
+        event.preventDefault();
+        const pastedValue = event.clipboardData.getData("text");
+        const hasCountryCode = /^\s*\+?7/.test(pastedValue) && pastedValue.replace(/\D/g, "").length > 10;
+        insertPhoneDigits(normalizePhoneDigits(pastedValue, hasCountryCode));
+      });
+
+      phoneInput.addEventListener("input", () => {
+        const rawValue = phoneInput.value;
+        const hasCountryPrefix = /^\s*\+7/.test(rawValue);
+        phoneDigits = normalizePhoneDigits(rawValue, hasCountryPrefix);
+        updatePhoneInput();
       });
 
       document.querySelectorAll("[data-order-product]").forEach((button) => {
@@ -860,7 +944,9 @@
 
       document.querySelector("#new-request").addEventListener("click", () => {
         leadForm.reset();
+        phoneDigits = "";
         phoneInput.setCustomValidity("");
+        updatePhoneInput();
         selectedProductName.textContent = "";
         selectedProductPanel.classList.add("hidden");
         document.querySelector("#copy-status").textContent = "";
