@@ -81,9 +81,17 @@
 
         <div class="hidden shrink-0 items-center gap-4 lg:flex">
           <a class="whitespace-nowrap text-sm font-semibold text-cream/85 transition-all duration-300 ease-out hover:text-terracotta" href="tel:+74951284590">+7 (495) 128-45-90</a>
+          <button class="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-cream/20 bg-cream/5 px-3 text-sm font-semibold text-cream transition-all duration-300 ease-out hover:border-terracotta/70 hover:bg-cream/10" type="button" data-cart-trigger aria-label="Корзина: 0 товаров, 0 ₽">
+            <i class="h-4 w-4" data-lucide="shopping-bag" stroke-width="1.75" aria-hidden="true"></i>
+            Корзина <span class="rounded-full bg-terracotta px-2 py-0.5 text-xs" data-cart-count>0</span><span data-cart-total>0 ₽</span>
+          </button>
           <a class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-cream/20 bg-cream/5 px-4 text-sm font-semibold text-cream shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta/70 hover:bg-cream/10 hover:shadow-lg active:translate-y-0" href="#form">Собрать заказ</a>
         </div>
 
+        <button class="relative inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:border-terracotta/60 hover:bg-cream/10 lg:hidden" type="button" data-cart-trigger aria-label="Корзина: 0 товаров, 0 ₽">
+          <i class="h-5 w-5" data-lucide="shopping-bag" stroke-width="1.75" aria-hidden="true"></i>
+          <span class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-terracotta px-1 text-[10px] font-bold text-cream" data-cart-count>0</span>
+        </button>
         <button class="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-cream/15 bg-cream/5 text-cream transition-all duration-300 ease-out hover:border-terracotta/60 hover:bg-cream/10 lg:hidden" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" data-menu-open-icon>
             <path d="M4 7h16M4 12h16M4 17h16"/>
@@ -404,11 +412,16 @@
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="4 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                   </div>
+                  <label class="mt-4 block text-xs font-semibold text-espresso/70">Помол
+                    <select class="mt-1.5 min-h-[42px] w-full rounded-lg border border-espresso/15 bg-white px-3 text-sm text-espresso outline-none transition-all duration-300 ease-out focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" data-grind aria-label="Выберите помол для Эфиопии Иргачефф">
+                      <option value="В зёрнах">В зёрнах</option><option value="Под фильтр" selected>Под фильтр</option><option value="Под эспрессо">Под эспрессо</option><option value="Под турку">Под турку</option>
+                    </select>
+                  </label>
                 </div>
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">750 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Эфиопия Иргачефф" data-price="750 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Эфиопия Иргачефф" data-price="750" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -426,11 +439,16 @@
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="2 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="4 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                   </div>
+                  <label class="mt-4 block text-xs font-semibold text-espresso/70">Помол
+                    <select class="mt-1.5 min-h-[42px] w-full rounded-lg border border-espresso/15 bg-white px-3 text-sm text-espresso outline-none transition-all duration-300 ease-out focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" data-grind aria-label="Выберите помол для Бразилии Серрадо">
+                      <option value="В зёрнах">В зёрнах</option><option value="Под фильтр">Под фильтр</option><option value="Под эспрессо" selected>Под эспрессо</option><option value="Под турку">Под турку</option>
+                    </select>
+                  </label>
                 </div>
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">590 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Бразилия Серрадо" data-price="590 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Бразилия Серрадо" data-price="590" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -452,7 +470,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">850 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Дрип-сет «Неделя без кофейни»" data-price="850 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Дрип-сет «Неделя без кофейни»" data-price="850">Заказать</button>
               </div>
             </article>
 
@@ -470,11 +488,16 @@
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Кислотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                     <div class="flex items-center justify-between gap-3 text-xs"><span class="font-medium text-espresso/70">Плотность</span><span class="flex gap-1" role="img" aria-label="3 из 5"><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-terracotta"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i><i class="h-2 w-2 rounded-full bg-espresso/15"></i></span></div>
                   </div>
+                  <label class="mt-4 block text-xs font-semibold text-espresso/70">Помол
+                    <select class="mt-1.5 min-h-[42px] w-full rounded-lg border border-espresso/15 bg-white px-3 text-sm text-espresso outline-none transition-all duration-300 ease-out focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" data-grind aria-label="Выберите помол для стартового набора Три страны">
+                      <option value="В зёрнах">В зёрнах</option><option value="Под фильтр" selected>Под фильтр</option><option value="Под эспрессо">Под эспрессо</option><option value="Под турку">Под турку</option>
+                    </select>
+                  </label>
                 </div>
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">1 190 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Стартовый набор «Три страны»" data-price="1 190 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Стартовый набор «Три страны»" data-price="1190" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -493,7 +516,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">380 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Базиликовый чизкейк с клубникой" data-price="380 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Базиликовый чизкейк с клубникой" data-price="380">Заказать</button>
               </div>
             </article>
 
@@ -515,7 +538,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">2 490 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Подарочный бокс «Партия на подарок»" data-price="2 490 ₽">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Подарочный бокс «Партия на подарок»" data-price="2490">Заказать</button>
               </div>
             </article>
           </div>
@@ -532,29 +555,87 @@
         <div class="pointer-events-none absolute -bottom-48 right-0 -z-10 h-96 w-96 rounded-full bg-espresso/20 blur-3xl" aria-hidden="true"></div>
         <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 md:gap-16 lg:grid-cols-2 lg:px-8">
           <div class="relative">
-            <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cream/90 backdrop-blur-md">Ваш кофе начинается с трёх вопросов</span>
-            <h2 class="max-w-2xl font-heading text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl" id="form-title">Не знаете, какой сорт ваш? Подберём за 3 вопроса — и подарим первый дрип</h2>
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">Оставьте телефон — шеф-бариста задаст 3 коротких вопроса и подберёт кофе под ваш вкус и способ заваривания. Первому заказу — скидка 15%, в каждый первый заказ — пробник дрип-пакета в подарок.</p>
-            <div class="mt-8 inline-flex rotate-[-5deg] items-center gap-3 rounded-xl border border-gold/50 bg-gold px-5 py-3 text-sm font-extrabold text-espresso shadow-[0_16px_40px_rgba(43,26,15,0.3)] transition-transform duration-300 ease-out hover:rotate-0">
-              <i class="h-5 w-5" data-lucide="gift" stroke-width="1.75" aria-hidden="true"></i>
-              + пробник в подарок
+            <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cream/90 backdrop-blur-md">Онлайн-бариста · подбор за пару кликов</span>
+            <h2 class="max-w-2xl font-heading text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl" id="form-title">Не знаете, какой сорт ваш? Подберём за 3 шага — и подарим первый дрип</h2>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">Ответьте на два вопроса — и сразу получите рекомендацию по вкусу и способу приготовления. Без ожидания звонка.</p>
+            <div class="mt-8 rounded-2xl border border-cream/20 bg-cream/10 p-5 shadow-[0_16px_40px_rgba(43,26,15,0.2)] backdrop-blur-md sm:p-6" id="barista-quiz">
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-cream/70" data-quiz-step-title>Шаг 1 из 3 · вкус</p>
+                <span class="h-1.5 w-24 overflow-hidden rounded-full bg-cream/20"><span class="block h-full w-1/3 rounded-full bg-gold transition-all duration-300" data-quiz-progress></span></span>
+              </div>
+              <h3 class="mt-3 font-heading text-lg font-bold">Что вам ближе?</h3>
+              <div class="mt-4 grid gap-2" role="group" aria-label="Выберите вкусовой профиль">
+                <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-taste="chocolate">Шоколад и орехи (без кислинки)</button>
+                <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-taste="berries">Ягоды и цитрусы (поярче)</button>
+                <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-taste="variety">Хочу попробовать всё сразу</button>
+              </div>
+              <div class="mt-6 hidden border-t border-cream/15 pt-5" data-brew-step>
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-cream/70">Шаг 2 из 3 · способ приготовления</p>
+                <h3 class="mt-3 font-heading text-lg font-bold">В чём готовите?</h3>
+                <div class="mt-4 grid gap-2 sm:grid-cols-2" role="group" aria-label="Выберите способ приготовления">
+                  <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-brew="espresso">Кофемашина / Эспрессо</button>
+                  <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-brew="filter">Воронка / Фильтр</button>
+                  <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-brew="turka">Турка / Френч-пресс</button>
+                  <button class="min-h-[48px] rounded-xl border border-cream/20 bg-espresso/15 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 ease-out hover:border-gold hover:bg-cream/10" type="button" data-brew="cup">Без техники (в чашке)</button>
+                </div>
+              </div>
+              <div class="mt-5 hidden rounded-xl border border-gold/30 bg-espresso/30 p-4 sm:p-5" data-recommendation aria-live="polite">
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-gold">Шаг 3 из 3 · ваш матч</p>
+                <p class="mt-2 text-sm leading-relaxed text-cream" data-recommendation-copy></p>
+                <button class="mt-4 inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-gold px-4 py-3 text-center text-sm font-bold text-espresso shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-xl active:translate-y-0" type="button" data-add-recommendation>Добавить в мой заказ со скидкой 15%</button>
+              </div>
+              <input type="hidden" name="quiz-brewing-method" form="lead-form" data-quiz-method>
             </div>
           </div>
 
-          <div class="rounded-[20px] border border-espresso/10 bg-cream p-6 text-espresso shadow-[0_30px_90px_rgba(35,14,4,0.3)] sm:p-8">
-            <div class="mb-5 hidden items-start justify-between gap-3 rounded-xl border border-terracotta/20 bg-terracotta/5 p-4" id="selected-product" aria-live="polite">
-              <div class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
-                  <i class="h-4 w-4" data-lucide="shopping-bag" stroke-width="1.75" aria-hidden="true"></i>
-                </span>
-                <p class="text-sm leading-relaxed text-espresso"><span class="block text-xs font-semibold uppercase tracking-wide text-espresso/55">Выбранный товар</span><span class="mt-1 block font-bold" id="selected-product-name"></span></p>
+          <div class="rounded-[20px] border border-espresso/10 bg-cream p-5 text-espresso shadow-[0_30px_90px_rgba(35,14,4,0.3)] sm:p-8">
+            <div class="rounded-2xl border border-espresso/10 bg-white/80 p-4 sm:p-5" data-shipping-panel>
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-[0.14em] text-espresso/55">Бесплатная доставка за 2 часа</p>
+                  <p class="mt-2 text-sm font-bold leading-relaxed" data-shipping-message aria-live="polite">До бесплатной доставки за 2 часа осталось 2 000 ₽</p>
+                </div>
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta"><i class="h-5 w-5" data-lucide="truck" stroke-width="1.75" aria-hidden="true"></i></span>
               </div>
-              <button class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-espresso/55 transition-all duration-300 ease-out hover:bg-espresso/10 hover:text-espresso" type="button" id="clear-selected-product" aria-label="Сбросить выбранный товар">
-                <i class="h-4 w-4" data-lucide="x" stroke-width="1.75" aria-hidden="true"></i>
-              </button>
+              <div class="mt-4 h-2.5 overflow-hidden rounded-full bg-espresso/10" role="progressbar" aria-label="Прогресс до бесплатной доставки" aria-valuemin="0" aria-valuemax="2000" aria-valuenow="0" data-shipping-progress>
+                <span class="block h-full w-0 rounded-full bg-terracotta transition-all duration-500 ease-out" data-shipping-bar></span>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2" data-upsells>
+                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-name="Базиликовый чизкейк с клубникой" data-price="380">+ Базиликовый чизкейк (380 ₽)</button>
+                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-name="Дрип-сет «Неделя без кофейни»" data-price="850">+ Дрип-сет (850 ₽)</button>
+              </div>
             </div>
 
-            <form id="lead-form" class="space-y-5 transition-opacity duration-300 ease-out">
+            <div class="mt-6">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="font-heading text-lg font-bold">Корзина заказа</h3>
+                <span class="text-xs font-semibold text-espresso/55" data-order-count>0 товаров</span>
+              </div>
+              <p class="mt-3 rounded-xl bg-espresso/5 px-4 py-3 text-sm text-espresso/65" data-cart-empty>Добавьте кофе или десерт из каталога — или выберите рекомендацию онлайн-бариста.</p>
+              <ul class="mt-3 space-y-3" data-cart-items aria-live="polite"></ul>
+              <p class="mt-3 hidden rounded-lg bg-terracotta/10 px-3 py-2 text-sm font-semibold text-terracotta" data-cart-error role="alert">Добавьте хотя бы один товар, чтобы оформить заказ.</p>
+              <div class="mt-4 space-y-2 border-t border-espresso/10 pt-4 text-sm">
+                <div class="flex justify-between gap-3 text-espresso/65"><span>Товары</span><span data-subtotal>0 ₽</span></div>
+                <div class="hidden justify-between gap-3 text-green" data-discount-row><span>Скидка онлайн-бариста · 15%</span><span data-discount-amount>−0 ₽</span></div>
+                <div class="hidden justify-between gap-3 text-green" data-pickup-row><span>Самовывоз · 10%</span><span data-pickup-amount>−0 ₽</span></div>
+                <div class="flex justify-between gap-3 border-t border-espresso/10 pt-3 font-bold"><span>Итого к оплате</span><span class="font-heading text-xl text-terracotta" data-order-total>0 ₽</span></div>
+              </div>
+            </div>
+
+            <form id="lead-form" class="mt-6 space-y-5 border-t border-espresso/10 pt-6 transition-opacity duration-300 ease-out">
+              <fieldset>
+                <legend class="mb-2 text-sm font-semibold">Как получить заказ</legend>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="flex min-h-[48px] cursor-pointer items-center gap-2 rounded-xl border border-terracotta bg-terracotta/5 px-3 text-xs font-semibold sm:text-sm">
+                    <input class="accent-[#E2622B]" type="radio" name="fulfillment" value="delivery" checked data-fulfillment>
+                    Доставка за 2 часа
+                  </label>
+                  <label class="flex min-h-[48px] cursor-pointer items-center gap-2 rounded-xl border border-espresso/15 bg-white px-3 text-xs font-semibold sm:text-sm">
+                    <input class="accent-[#E2622B]" type="radio" name="fulfillment" value="pickup" data-fulfillment>
+                    Самовывоз (−10%)
+                  </label>
+                </div>
+              </fieldset>
               <label class="block">
                 <span class="mb-2 block text-sm font-semibold">Имя</span>
                 <input class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" type="text" name="name" placeholder="Как к вам обращаться?" autocomplete="name" required>
@@ -564,29 +645,25 @@
                 <input class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" id="phone-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint" required>
                 <span class="mt-1.5 block text-xs text-espresso/55" id="phone-hint">Формат: +7 (XXX) XXX-XX-XX</span>
               </label>
-              <label class="block">
-                <span class="mb-2 block text-sm font-semibold">Как вы готовите кофе дома?</span>
-                <select class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" name="brewing-method" required>
-                  <option value="" selected disabled>Выберите способ приготовления</option>
-                  <option>В кофемашине (эспрессо дома)</option>
-                  <option>Воронка, гейзер, фильтр</option>
-                  <option>Турка, френч-пресс, чашка</option>
-                  <option>Пока никак — хочу, чтобы было просто (дрипы)</option>
-                </select>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-espresso/10 bg-white p-4 text-sm leading-relaxed">
+                <input class="mt-1 h-4 w-4 shrink-0 accent-[#E2622B]" type="checkbox" name="messenger-confirmation" checked>
+                <span>Не звонить по телефону — подтвердить заказ в Telegram / WhatsApp</span>
               </label>
               <button class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-espresso px-5 text-center text-sm font-bold text-cream shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#3B261A] hover:shadow-xl active:translate-y-0 sm:text-base" type="submit">
-                Получить подбор и скидку 15%
+                Оформить заказ
                 <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
               </button>
-              <p class="text-center text-xs leading-relaxed text-espresso/55">Ответим в течение 15 минут в рабочее время. Никакого спама — только ваш кофе.</p>
+              <p class="text-center text-xs leading-relaxed text-espresso/55">Проверьте состав и итоговую сумму перед подтверждением заказа.</p>
             </form>
 
             <div class="hidden text-center transition-opacity duration-300 ease-out" id="thank-you" aria-live="polite" tabindex="-1">
               <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green/10 text-green">
                 <i class="h-7 w-7" data-lucide="check" stroke-width="1.75" aria-hidden="true"></i>
               </span>
-              <h3 class="mt-5 font-heading text-xl font-bold sm:text-2xl">Готово!</h3>
-              <p class="mt-3 text-sm leading-relaxed text-espresso/70">Позвоним в течение 15 минут. А пока — промокод DRIPO15 на скидку</p>
+              <h3 class="mt-5 font-heading text-xl font-bold sm:text-2xl">Итоговый чек готов</h3>
+              <p class="mt-3 text-sm leading-relaxed text-espresso/70" data-confirmation-message></p>
+              <div class="mt-5 rounded-xl border border-espresso/10 bg-white p-4 text-left" data-receipt></div>
+              <p class="mt-5 text-sm font-semibold text-espresso/70">Промокод на скидку</p>
               <div class="mx-auto mt-5 flex max-w-sm items-center gap-2 rounded-xl border border-espresso/10 bg-white p-2">
                 <span class="flex-1 font-heading text-lg font-bold tracking-[0.16em] text-terracotta" id="promo-code">DRIPO15</span>
                 <button class="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-espresso px-3 text-sm font-semibold text-cream transition-all duration-300 ease-out hover:bg-terracotta" type="button" id="copy-promo">
@@ -683,10 +760,14 @@
       </div>
     </footer>
 
-    <a class="fixed bottom-4 left-4 right-4 z-40 inline-flex min-h-[52px] items-center justify-center rounded-xl bg-terracotta px-5 text-sm font-bold text-cream shadow-[0_12px_36px_rgba(43,26,15,0.35)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 md:hidden" href="#catalog">
-      Выбрать кофе со скидкой 15%
+    <a class="fixed bottom-4 left-4 right-4 z-40 inline-flex min-h-[52px] items-center justify-center rounded-xl bg-terracotta px-5 text-sm font-bold text-cream shadow-[0_12px_36px_rgba(43,26,15,0.35)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 md:hidden" href="#form">
+      Перейти к заказу
       <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
     </a>
+    <button class="fixed bottom-20 right-4 z-40 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-cream/70 bg-espresso px-4 text-sm font-bold text-cream shadow-[0_12px_36px_rgba(43,26,15,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#3B261A] md:bottom-6 md:right-6" type="button" data-cart-trigger aria-label="Корзина: 0 товаров, 0 ₽">
+      <i class="h-4 w-4" data-lucide="shopping-bag" stroke-width="1.75" aria-hidden="true"></i>
+      <span>Корзина</span><span class="rounded-full bg-terracotta px-2 py-0.5 text-xs" data-cart-count>0</span><span data-cart-total>0 ₽</span>
+    </button>
 
     <script>
       lucide.createIcons({ attrs: { "stroke-width": 1.75 } });
@@ -742,10 +823,325 @@
 
       const leadForm = document.querySelector("#lead-form");
       const phoneInput = document.querySelector("#phone-input");
-      const selectedProductPanel = document.querySelector("#selected-product");
-      const selectedProductName = document.querySelector("#selected-product-name");
       const thankYouPanel = document.querySelector("#thank-you");
+      const cartItemsElement = document.querySelector("[data-cart-items]");
+      const cartEmptyMessage = document.querySelector("[data-cart-empty]");
+      const cartErrorMessage = document.querySelector("[data-cart-error]");
+      const shippingProgress = document.querySelector("[data-shipping-progress]");
+      const shippingBar = document.querySelector("[data-shipping-bar]");
+      const shippingMessage = document.querySelector("[data-shipping-message]");
+      const shippingPanel = document.querySelector("[data-shipping-panel]");
+      const upsells = document.querySelector("[data-upsells]");
+      const fulfillmentInputs = Array.from(leadForm.querySelectorAll("[data-fulfillment]"));
+      const cart = [];
       let phoneDigits = "";
+      let discountActive = false;
+      let selectedTaste = "";
+      let selectedBrew = "";
+      let recommendedProduct = null;
+
+      function formatPrice(amount) {
+        return `${amount.toLocaleString("ru-RU")} ₽`;
+      }
+
+      function getSubtotal() {
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      }
+
+      function getItemCount() {
+        return cart.reduce((count, item) => count + item.quantity, 0);
+      }
+
+      function getOrderTotals() {
+        const subtotal = getSubtotal();
+        const isPickup = leadForm.elements.fulfillment.value === "pickup";
+        const pickupDiscount = isPickup ? Math.round(subtotal * 0.1) : 0;
+        const discountedSubtotal = subtotal - pickupDiscount;
+        const baristaDiscount = discountActive ? Math.round(discountedSubtotal * 0.15) : 0;
+        return {
+          subtotal,
+          pickupDiscount,
+          baristaDiscount,
+          total: discountedSubtotal - baristaDiscount,
+          isPickup
+        };
+      }
+
+      function updateCartButtonLabels(itemCount, subtotal) {
+        document.querySelectorAll("[data-cart-count]").forEach((count) => {
+          count.textContent = String(itemCount);
+        });
+        document.querySelectorAll("[data-cart-total]").forEach((total) => {
+          total.textContent = formatPrice(subtotal);
+        });
+        document.querySelectorAll("[data-cart-trigger]").forEach((button) => {
+          button.setAttribute("aria-label", `Корзина: ${itemCount} товаров, ${formatPrice(subtotal)}`);
+        });
+      }
+
+      function renderCart() {
+        const subtotal = getSubtotal();
+        const itemCount = getItemCount();
+        const totals = getOrderTotals();
+        const finalTwoDigits = itemCount % 100;
+        const finalDigit = itemCount % 10;
+        const itemWord = finalTwoDigits >= 11 && finalTwoDigits <= 14
+          ? "товаров"
+          : finalDigit === 1
+            ? "товар"
+            : finalDigit >= 2 && finalDigit <= 4
+              ? "товара"
+              : "товаров";
+        cartItemsElement.replaceChildren();
+        cartEmptyMessage.classList.toggle("hidden", cart.length > 0);
+        document.querySelector("[data-order-count]").textContent = `${itemCount} ${itemWord}`;
+        updateCartButtonLabels(itemCount, subtotal);
+
+        cart.forEach((item) => {
+          const row = document.createElement("li");
+          row.className = "flex items-start justify-between gap-3 rounded-xl border border-espresso/10 bg-white p-3";
+
+          const detail = document.createElement("div");
+          detail.className = "min-w-0 flex-1";
+          const title = document.createElement("p");
+          title.className = "text-sm font-bold leading-snug";
+          title.textContent = item.name;
+          detail.append(title);
+
+          if (item.grind) {
+            const grind = document.createElement("p");
+            grind.className = "mt-1 text-xs text-espresso/55";
+            grind.textContent = item.grind;
+            detail.append(grind);
+          }
+
+          const amount = document.createElement("p");
+          amount.className = "mt-1 text-xs font-semibold text-terracotta";
+          amount.textContent = formatPrice(item.price * item.quantity);
+          detail.append(amount);
+
+          const controls = document.createElement("div");
+          controls.className = "flex shrink-0 flex-col items-end gap-2";
+          const quantityControls = document.createElement("div");
+          quantityControls.className = "flex items-center gap-1";
+
+          [["−", "decrease", "Уменьшить количество"], [String(item.quantity), "quantity", `Количество: ${item.quantity}`], ["+", "increase", "Увеличить количество"]].forEach(([label, action, accessibleName]) => {
+            const control = document.createElement("button");
+            control.className = action === "quantity"
+              ? "min-w-7 text-center text-xs font-bold"
+              : "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-espresso/10 text-base font-bold transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta";
+            control.type = "button";
+            control.textContent = label;
+            control.setAttribute("aria-label", accessibleName);
+            if (action !== "quantity") {
+              control.dataset.cartAction = action;
+              control.dataset.cartKey = item.key;
+            } else {
+              control.disabled = true;
+              control.setAttribute("aria-live", "polite");
+            }
+            quantityControls.append(control);
+          });
+
+          const remove = document.createElement("button");
+          remove.className = "text-[11px] font-semibold text-espresso/50 underline decoration-espresso/20 underline-offset-2 transition-all duration-300 ease-out hover:text-terracotta";
+          remove.type = "button";
+          remove.textContent = "Удалить";
+          remove.dataset.cartAction = "remove";
+          remove.dataset.cartKey = item.key;
+          remove.setAttribute("aria-label", `Удалить ${item.name} из заказа`);
+          controls.append(quantityControls, remove);
+          row.append(detail, controls);
+          cartItemsElement.append(row);
+        });
+
+        document.querySelector("[data-subtotal]").textContent = formatPrice(totals.subtotal);
+        document.querySelector("[data-order-total]").textContent = formatPrice(totals.total);
+        document.querySelector("[data-discount-row]").classList.toggle("hidden", !discountActive);
+        document.querySelector("[data-discount-row]").classList.toggle("flex", discountActive);
+        document.querySelector("[data-discount-amount]").textContent = `−${formatPrice(totals.baristaDiscount)}`;
+        document.querySelector("[data-pickup-row]").classList.toggle("hidden", !totals.isPickup);
+        document.querySelector("[data-pickup-row]").classList.toggle("flex", totals.isPickup);
+        document.querySelector("[data-pickup-amount]").textContent = `−${formatPrice(totals.pickupDiscount)}`;
+
+        const shippingReady = subtotal >= 2000;
+        const remaining = Math.max(2000 - subtotal, 0);
+        shippingProgress.setAttribute("aria-valuenow", String(Math.min(subtotal, 2000)));
+        shippingBar.style.width = `${Math.min(subtotal / 2000 * 100, 100)}%`;
+        shippingBar.classList.toggle("bg-green", shippingReady);
+        shippingBar.classList.toggle("bg-terracotta", !shippingReady);
+        shippingMessage.textContent = shippingReady
+          ? "🎉 Бесплатная доставка за 2 часа и помол в подарок активированы!"
+          : `До бесплатной доставки за 2 часа осталось ${formatPrice(remaining)}`;
+        shippingMessage.classList.toggle("text-green", shippingReady);
+        shippingMessage.classList.toggle("text-espresso", !shippingReady);
+        shippingPanel.classList.toggle("border-green/30", shippingReady);
+        shippingPanel.classList.toggle("border-espresso/10", !shippingReady);
+        upsells.classList.toggle("hidden", shippingReady);
+      }
+
+      function addToCart(product) {
+        const key = `${product.id}|${product.grind || ""}`;
+        const existingItem = cart.find((item) => item.key === key);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ ...product, key, quantity: 1 });
+        }
+        cartErrorMessage.classList.add("hidden");
+        renderCart();
+      }
+
+      function scrollToOrder() {
+        document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function productFromButton(button) {
+        const grindSelector = button.closest("article").querySelector("[data-grind]");
+        return {
+          id: button.dataset.name,
+          name: button.dataset.name,
+          price: Number(button.dataset.price),
+          grind: grindSelector ? grindSelector.value : ""
+        };
+      }
+
+      document.querySelectorAll("[data-order-product]").forEach((button) => {
+        button.addEventListener("click", () => {
+          addToCart(productFromButton(button));
+          scrollToOrder();
+        });
+      });
+
+      document.querySelectorAll("[data-upsell]").forEach((button) => {
+        button.addEventListener("click", () => {
+          addToCart({
+            id: button.dataset.name,
+            name: button.dataset.name,
+            price: Number(button.dataset.price),
+            grind: ""
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-cart-trigger]").forEach((button) => {
+        button.addEventListener("click", scrollToOrder);
+      });
+
+      cartItemsElement.addEventListener("click", (event) => {
+        const actionButton = event.target.closest("[data-cart-action]");
+        if (!actionButton) {
+          return;
+        }
+        const index = cart.findIndex((item) => item.key === actionButton.dataset.cartKey);
+        if (index < 0) {
+          return;
+        }
+        if (actionButton.dataset.cartAction === "increase") {
+          cart[index].quantity += 1;
+        } else if (actionButton.dataset.cartAction === "decrease") {
+          cart[index].quantity -= 1;
+          if (cart[index].quantity === 0) {
+            cart.splice(index, 1);
+          }
+        } else {
+          cart.splice(index, 1);
+        }
+        renderCart();
+      });
+
+      const quizProgress = document.querySelector("[data-quiz-progress]");
+      const quizStepTitle = document.querySelector("[data-quiz-step-title]");
+      const brewStep = document.querySelector("[data-brew-step]");
+      const recommendationPanel = document.querySelector("[data-recommendation]");
+      const recommendationCopy = document.querySelector("[data-recommendation-copy]");
+      const recommendationButton = document.querySelector("[data-add-recommendation]");
+      const quizMethodInput = document.querySelector("[data-quiz-method]");
+      const coffees = {
+        chocolate: { id: "brazil-serrado", name: "Бразилия Серрадо", price: 590 },
+        berries: { id: "ethiopia-irghacheff", name: "Эфиопия Иргачефф", price: 750 },
+        variety: { id: "starter-set", name: "Стартовый набор «Три страны»", price: 1190 }
+      };
+      const grindByBrew = {
+        espresso: "Под эспрессо",
+        filter: "Под фильтр",
+        turka: "Под турку",
+        cup: ""
+      };
+      const brewLabels = {
+        espresso: "кофемашине",
+        filter: "фильтру",
+        turka: "турке",
+        cup: "чашке"
+      };
+
+      document.querySelectorAll("[data-taste]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedTaste = button.dataset.taste;
+          selectedBrew = "";
+          recommendedProduct = null;
+          quizMethodInput.value = "";
+          document.querySelectorAll("[data-taste]").forEach((answer) => {
+            answer.classList.toggle("border-gold", answer === button);
+            answer.classList.toggle("bg-cream/10", answer === button);
+            answer.setAttribute("aria-pressed", String(answer === button));
+          });
+          document.querySelectorAll("[data-brew]").forEach((answer) => {
+            answer.classList.remove("border-gold", "bg-cream/10");
+            answer.setAttribute("aria-pressed", "false");
+          });
+          recommendationPanel.classList.add("hidden");
+          brewStep.classList.remove("hidden");
+          quizStepTitle.textContent = "Шаг 2 из 3 · способ приготовления";
+          quizProgress.style.width = "67%";
+        });
+      });
+
+      document.querySelectorAll("[data-brew]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedBrew = button.dataset.brew;
+          document.querySelectorAll("[data-brew]").forEach((answer) => {
+            answer.classList.toggle("border-gold", answer === button);
+            answer.classList.toggle("bg-cream/10", answer === button);
+            answer.setAttribute("aria-pressed", String(answer === button));
+          });
+          const product = selectedBrew === "cup"
+            ? { id: "drip-set", name: "Дрип-сет «Неделя без кофейни»", price: 850, grind: "" }
+            : { ...coffees[selectedTaste], grind: grindByBrew[selectedBrew] };
+          recommendedProduct = product;
+          quizMethodInput.value = button.textContent.trim();
+          const grindText = product.grind ? ` (помол ${product.grind.toLowerCase()})` : "";
+          recommendationCopy.textContent = `Ваш идеальный матч: ${product.name}${grindText} + пробник дрипа 0 ₽. Подойдёт для приготовления в ${brewLabels[selectedBrew]}.`;
+          recommendationPanel.classList.remove("hidden");
+          quizStepTitle.textContent = "Шаг 3 из 3 · ваша рекомендация";
+          quizProgress.style.width = "100%";
+        });
+      });
+
+      recommendationButton.addEventListener("click", () => {
+        if (!recommendedProduct) {
+          return;
+        }
+        discountActive = true;
+        addToCart(recommendedProduct);
+        addToCart({ id: "drip-sample", name: "Пробник дрипа", price: 0, grind: "" });
+        scrollToOrder();
+      });
+
+      fulfillmentInputs.forEach((input) => {
+        input.addEventListener("change", () => {
+          fulfillmentInputs.forEach((radio) => {
+            const label = radio.closest("label");
+            label.classList.toggle("border-terracotta", radio.checked);
+            label.classList.toggle("bg-terracotta/5", radio.checked);
+            label.classList.toggle("border-espresso/15", !radio.checked);
+            label.classList.toggle("bg-white", !radio.checked);
+          });
+          renderCart();
+        });
+      });
+
+      renderCart();
 
       function normalizePhoneDigits(value, includesCountryCode = false) {
         let digits = value.replace(/\D/g, "");
@@ -823,31 +1219,73 @@
         updatePhoneInput(caretPosition);
       });
 
-      document.querySelectorAll("[data-order-product]").forEach((button) => {
-        button.addEventListener("click", () => {
-          selectedProductName.textContent = `${button.dataset.name} — ${button.dataset.price}`;
-          selectedProductPanel.classList.remove("hidden");
-          document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      });
-
-      document.querySelector("#clear-selected-product").addEventListener("click", () => {
-        selectedProductName.textContent = "";
-        selectedProductPanel.classList.add("hidden");
-      });
-
       leadForm.addEventListener("submit", (event) => {
         event.preventDefault();
+
+        if (cart.length === 0) {
+          cartErrorMessage.classList.remove("hidden");
+          cartErrorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
 
         if (!leadForm.reportValidity()) {
           return;
         }
 
+        const totals = getOrderTotals();
+        const receipt = document.querySelector("[data-receipt]");
+        const receiptTitle = document.createElement("p");
+        receiptTitle.className = "font-heading text-base font-bold";
+        receiptTitle.textContent = `Заказ для ${leadForm.elements.name.value}`;
+        const receiptItems = document.createElement("ul");
+        receiptItems.className = "mt-3 space-y-2 border-b border-espresso/10 pb-3 text-sm";
+        cart.forEach((item) => {
+          const line = document.createElement("li");
+          line.className = "flex justify-between gap-3";
+          const description = document.createElement("span");
+          description.textContent = `${item.quantity} × ${item.name}${item.grind ? ` · ${item.grind}` : ""}`;
+          const amount = document.createElement("span");
+          amount.className = "shrink-0 font-semibold";
+          amount.textContent = formatPrice(item.price * item.quantity);
+          line.append(description, amount);
+          receiptItems.append(line);
+        });
+
+        const receiptTotals = document.createElement("div");
+        receiptTotals.className = "mt-3 space-y-2 text-sm";
+        const subtotalLine = document.createElement("p");
+        subtotalLine.className = "flex justify-between gap-3 text-espresso/65";
+        subtotalLine.textContent = `Товары: ${formatPrice(totals.subtotal)}`;
+        receiptTotals.append(subtotalLine);
+
+        if (totals.pickupDiscount > 0) {
+          const pickupLine = document.createElement("p");
+          pickupLine.className = "flex justify-between gap-3 text-green";
+          pickupLine.textContent = `Самовывоз (−10%): −${formatPrice(totals.pickupDiscount)}`;
+          receiptTotals.append(pickupLine);
+        }
+        if (totals.baristaDiscount > 0) {
+          const discountLine = document.createElement("p");
+          discountLine.className = "flex justify-between gap-3 text-green";
+          discountLine.textContent = `Скидка онлайн-бариста (15%): −${formatPrice(totals.baristaDiscount)}`;
+          receiptTotals.append(discountLine);
+        }
+
+        const totalLine = document.createElement("p");
+        totalLine.className = "flex justify-between gap-3 border-t border-espresso/10 pt-3 font-bold";
+        totalLine.textContent = `Итого: ${formatPrice(totals.total)}`;
+        receiptTotals.append(totalLine);
+        receipt.replaceChildren(receiptTitle, receiptItems, receiptTotals);
+
+        const confirmationMessage = document.querySelector("[data-confirmation-message]");
+        confirmationMessage.textContent = leadForm.elements["messenger-confirmation"].checked
+          ? "Выбрано подтверждение в Telegram / WhatsApp без звонка. Чек пока остаётся в браузере: для отправки в кофейню нужен подключённый канал приёма заказов."
+          : "Чек готов. Для передачи заказа в кофейню нужно подключить сервис приёма заявок.";
+
         leadForm.classList.add("pointer-events-none", "opacity-0");
         window.setTimeout(() => {
           leadForm.classList.add("hidden");
           leadForm.classList.remove("pointer-events-none", "opacity-0");
-          selectedProductPanel.classList.add("hidden");
           thankYouPanel.classList.add("opacity-0");
           thankYouPanel.classList.remove("hidden");
           window.requestAnimationFrame(() => {
@@ -891,8 +1329,27 @@
         phoneDigits = "";
         phoneInput.setCustomValidity("");
         updatePhoneInput();
-        selectedProductName.textContent = "";
-        selectedProductPanel.classList.add("hidden");
+        cart.splice(0, cart.length);
+        discountActive = false;
+        selectedTaste = "";
+        selectedBrew = "";
+        recommendedProduct = null;
+        quizMethodInput.value = "";
+        document.querySelectorAll("[data-taste], [data-brew]").forEach((button) => {
+          button.classList.remove("border-gold", "bg-cream/10");
+        });
+        brewStep.classList.add("hidden");
+        recommendationPanel.classList.add("hidden");
+        quizStepTitle.textContent = "Шаг 1 из 3 · вкус";
+        quizProgress.style.width = "33%";
+        fulfillmentInputs.forEach((radio) => {
+          const label = radio.closest("label");
+          label.classList.toggle("border-terracotta", radio.checked);
+          label.classList.toggle("bg-terracotta/5", radio.checked);
+          label.classList.toggle("border-espresso/15", !radio.checked);
+          label.classList.toggle("bg-white", !radio.checked);
+        });
+        renderCart();
         document.querySelector("#copy-status").textContent = "";
         thankYouPanel.classList.add("opacity-0", "pointer-events-none");
         window.setTimeout(() => {
