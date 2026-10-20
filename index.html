@@ -614,10 +614,20 @@
               <p class="mt-3 rounded-xl bg-espresso/5 px-4 py-3 text-sm text-espresso/65" data-cart-empty>Добавьте кофе или десерт из каталога — или выберите рекомендацию онлайн-бариста.</p>
               <ul class="mt-3 space-y-3" data-cart-items aria-live="polite"></ul>
               <p class="mt-3 hidden rounded-lg bg-terracotta/10 px-3 py-2 text-sm font-semibold text-terracotta" data-cart-error role="alert">Добавьте хотя бы один товар, чтобы оформить заказ.</p>
+              <div class="mt-4 rounded-xl border border-espresso/10 bg-white p-4">
+                <label class="block text-sm font-semibold" for="checkout-promo">Промокод</label>
+                <div class="mt-2 flex gap-2">
+                  <input class="min-h-[48px] min-w-0 flex-1 rounded-xl border border-espresso/15 bg-cream px-3 text-sm text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" id="checkout-promo" type="text" placeholder="Введите промокод, например DRIPO15" autocomplete="off" aria-describedby="promo-hint promo-status">
+                  <button class="min-h-[48px] shrink-0 rounded-xl bg-espresso px-4 text-sm font-bold text-cream transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#3B261A] hover:shadow-lg active:translate-y-0" type="button" data-apply-promo>Применить</button>
+                </div>
+                <button class="mt-3 min-h-[44px] rounded-full border border-terracotta/30 bg-terracotta/5 px-3 py-2 text-left text-xs font-semibold leading-relaxed text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-terracotta hover:bg-terracotta/10 sm:text-sm" type="button" data-promo-chip>Первый заказ? Нажмите, чтобы применить DRIPO15 (−15%)</button>
+                <p class="mt-2 min-h-5 text-xs font-semibold" id="promo-status" data-promo-status aria-live="polite"></p>
+              </div>
               <div class="mt-4 space-y-2 border-t border-espresso/10 pt-4 text-sm">
-                <div class="flex justify-between gap-3 text-espresso/65"><span>Товары</span><span data-subtotal>0 ₽</span></div>
+                <div class="flex justify-between gap-3 text-espresso/65"><span>Сумма товаров</span><span data-subtotal>0 ₽</span></div>
                 <div class="hidden justify-between gap-3 text-green" data-discount-row><span>Скидка онлайн-бариста · 15%</span><span data-discount-amount>−0 ₽</span></div>
                 <div class="hidden justify-between gap-3 text-green" data-pickup-row><span>Самовывоз · 10%</span><span data-pickup-amount>−0 ₽</span></div>
+                <div class="hidden justify-between gap-3 text-green" data-promo-discount-row><span>Скидка по промокоду DRIPO15 (−15%)</span><span data-promo-discount-amount>−0 ₽</span></div>
                 <div class="flex justify-between gap-3 border-t border-espresso/10 pt-3 font-bold"><span>Итого к оплате</span><span class="font-heading text-xl text-terracotta" data-order-total>0 ₽</span></div>
               </div>
             </div>
@@ -663,7 +673,7 @@
                 <span>Не звонить по телефону — подтвердить заказ в Telegram / WhatsApp</span>
               </label>
               <button class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-espresso px-5 text-center text-sm font-bold text-cream shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#3B261A] hover:shadow-xl active:translate-y-0 sm:text-base" type="submit">
-                Оформить заказ
+                <span data-submit-label>Перейти к оплате по СБП (0 ₽)</span>
                 <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
               </button>
               <p class="text-center text-xs leading-relaxed text-espresso/55">Проверьте состав и итоговую сумму перед подтверждением заказа.</p>
@@ -708,12 +718,13 @@
                 </div>
               </section>
               <p class="mt-5 text-sm font-semibold text-espresso/70">Промокод на скидку</p>
-              <div class="mx-auto mt-5 flex max-w-sm items-center gap-2 rounded-xl border border-espresso/10 bg-white p-2">
+              <div class="mx-auto mt-5 flex max-w-sm flex-col gap-2 rounded-xl border border-espresso/10 bg-white p-2 sm:flex-row sm:items-center">
                 <span class="flex-1 font-heading text-lg font-bold tracking-[0.16em] text-terracotta" id="promo-code">DRIPO15</span>
                 <button class="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-espresso px-3 text-sm font-semibold text-cream transition-all duration-300 ease-out hover:bg-terracotta" type="button" id="copy-promo">
                   <i class="h-4 w-4" data-lucide="copy" stroke-width="1.75" aria-hidden="true"></i>
                   Копировать
                 </button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-terracotta/30 px-3 text-center text-sm font-semibold text-terracotta transition-all duration-300 ease-out hover:bg-terracotta hover:text-cream" type="button" data-reapply-promo>Применить DRIPO15 к новому заказу</button>
               </div>
               <p class="mt-2 min-h-5 text-xs text-espresso/60" id="copy-status" aria-live="polite"></p>
               <button class="mt-5 inline-flex min-h-[48px] items-center justify-center rounded-xl border border-espresso/15 px-5 text-sm font-semibold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" id="new-request">Отправить ещё заявку</button>
@@ -881,6 +892,11 @@
       const cart = [];
       let phoneDigits = "";
       let discountActive = false;
+      let promoCodeActive = false;
+      let reapplyPromoForNextOrder = false;
+      let orderReceiptMessage = "";
+      let orderSiteUrl = "";
+      let currentOrderNumber = "";
       let selectedTaste = "";
       let selectedBrew = "";
       let recommendedProduct = null;
@@ -903,11 +919,14 @@
         const pickupDiscount = isPickup ? Math.round(subtotal * 0.1) : 0;
         const discountedSubtotal = subtotal - pickupDiscount;
         const baristaDiscount = discountActive ? Math.round(discountedSubtotal * 0.15) : 0;
+        const promoDiscountBase = discountedSubtotal - baristaDiscount;
+        const promoDiscount = promoCodeActive ? Math.round(promoDiscountBase * 0.15) : 0;
         return {
           subtotal,
           pickupDiscount,
           baristaDiscount,
-          total: discountedSubtotal - baristaDiscount,
+          promoDiscount,
+          total: promoDiscountBase - promoDiscount,
           isPickup
         };
       }
@@ -1008,6 +1027,12 @@
         document.querySelector("[data-pickup-row]").classList.toggle("hidden", !totals.isPickup);
         document.querySelector("[data-pickup-row]").classList.toggle("flex", totals.isPickup);
         document.querySelector("[data-pickup-amount]").textContent = `−${formatPrice(totals.pickupDiscount)}`;
+        document.querySelector("[data-promo-discount-row]").classList.toggle("hidden", !promoCodeActive);
+        document.querySelector("[data-promo-discount-row]").classList.toggle("flex", promoCodeActive);
+        document.querySelector("[data-promo-discount-amount]").textContent = `−${formatPrice(totals.promoDiscount)}`;
+        document.querySelector("[data-submit-label]").textContent = leadForm.elements.payment.value === "sbp"
+          ? `Перейти к оплате по СБП (${formatPrice(totals.total)})`
+          : `Оформить заказ (${formatPrice(totals.total)})`;
 
         const shippingReady = subtotal >= 2000;
         const remaining = Math.max(2000 - subtotal, 0);
@@ -1035,6 +1060,25 @@
         }
         cartErrorMessage.classList.add("hidden");
         renderCart();
+      }
+
+      function applyPromoCode() {
+        const promoInput = document.querySelector("#checkout-promo");
+        const promoStatus = document.querySelector("[data-promo-status]");
+        if (promoInput.value.trim().toUpperCase() !== "DRIPO15") {
+          promoCodeActive = false;
+          promoStatus.className = "mt-2 min-h-5 text-xs font-semibold text-terracotta";
+          promoStatus.textContent = "Промокод не найден. Проверьте написание.";
+          renderCart();
+          return false;
+        }
+
+        promoInput.value = "DRIPO15";
+        promoCodeActive = true;
+        promoStatus.className = "mt-2 min-h-5 text-xs font-semibold text-green";
+        promoStatus.textContent = "Промокод DRIPO15 применён: скидка 15%.";
+        renderCart();
+        return true;
       }
 
       function scrollToOrder() {
@@ -1195,7 +1239,21 @@
             label.classList.toggle("border-espresso/15", !radio.checked);
             label.classList.toggle("bg-white", !radio.checked);
           });
+          renderCart();
         });
+      });
+
+      document.querySelector("[data-apply-promo]").addEventListener("click", applyPromoCode);
+      document.querySelector("[data-promo-chip]").addEventListener("click", () => {
+        document.querySelector("#checkout-promo").value = "DRIPO15";
+        applyPromoCode();
+      });
+      document.querySelector("#checkout-promo").addEventListener("input", () => {
+        if (promoCodeActive) {
+          promoCodeActive = false;
+          document.querySelector("[data-promo-status]").textContent = "";
+          renderCart();
+        }
       });
 
       renderCart();
@@ -1276,6 +1334,41 @@
         updatePhoneInput(caretPosition);
       });
 
+      function refreshReceiptMessage(isSbpPaid = false) {
+        const totals = getOrderTotals();
+        const fulfillment = totals.isPickup ? "Самовывоз" : "Доставка";
+        const payment = isSbpPaid
+          ? "Оплачено по СБП"
+          : leadForm.elements.payment.value === "sbp"
+            ? "СБП онлайн"
+            : "При получении";
+        const wish = leadForm.elements["messenger-confirmation"].checked
+          ? "Не звонить, написать в мессенджер"
+          : "Позвонить";
+        const messageItems = cart.map((item) => {
+          const grind = item.grind ? `, помол ${item.grind}` : "";
+          return `— ${item.name}${grind}, ${item.quantity} шт., ${formatPrice(item.price * item.quantity)}`;
+        });
+        orderReceiptMessage = [
+          `☕ Заказ #${currentOrderNumber} в кофейне Свежая Партия`,
+          `👤 Клиент: ${leadForm.elements.name.value}, ${phoneInput.value}`,
+          "🛒 Состав заказа:",
+          ...messageItems,
+          `🚚 Получение: ${fulfillment}`,
+          `💳 Оплата: ${payment}`,
+          `💰 Итого к оплате: ${formatPrice(totals.total)}`,
+          `💬 Пожелание: ${wish}`
+        ].join("\n");
+        const encodedMessage = encodeURIComponent(orderReceiptMessage);
+        orderSiteUrl = window.location.protocol === "file:"
+          ? "https://freshbatch.coffee"
+          : `${window.location.origin}${window.location.pathname}`;
+        document.querySelector("[data-message-preview]").textContent = orderReceiptMessage;
+        document.querySelector("[data-telegram-order]").href = `https://t.me/freshbatch_coffee?text=${encodedMessage}`;
+        document.querySelector("[data-telegram-share]").href = `https://t.me/share/url?url=${encodeURIComponent(orderSiteUrl)}&text=${encodedMessage}`;
+        document.querySelector("[data-whatsapp-order]").href = `https://wa.me/74951284590?text=${encodedMessage}`;
+      }
+
       leadForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -1290,40 +1383,14 @@
         }
 
         const totals = getOrderTotals();
-        const orderNumber = String(Date.now()).slice(-6);
-        const fulfillment = totals.isPickup ? "Самовывоз" : "Доставка";
-        const payment = leadForm.elements.payment.value === "sbp" ? "СБП онлайн" : "При получении";
-        const wish = leadForm.elements["messenger-confirmation"].checked
-          ? "Не звонить, написать в мессенджер"
-          : "Позвонить";
-        const messageItems = cart.map((item) => {
-          const grind = item.grind ? `, помол ${item.grind}` : "";
-          return `— ${item.name}${grind}, ${item.quantity} шт., ${formatPrice(item.price * item.quantity)}`;
-        });
-        const receiptMessage = [
-          `☕ Заказ #${orderNumber} в кофейне Свежая Партия`,
-          `👤 Клиент: ${leadForm.elements.name.value}, ${phoneInput.value}`,
-          "🛒 Состав заказа:",
-          ...messageItems,
-          `🚚 Получение: ${fulfillment}`,
-          `💳 Оплата: ${payment}`,
-          `💰 Итого к оплате: ${formatPrice(totals.total)}`,
-          `💬 Пожелание: ${wish}`
-        ].join("\n");
-        const encodedMessage = encodeURIComponent(receiptMessage);
-        const siteUrl = window.location.protocol === "file:"
-          ? "https://freshbatch.coffee"
-          : `${window.location.origin}${window.location.pathname}`;
-        document.querySelector("[data-message-preview]").textContent = receiptMessage;
-        document.querySelector("[data-telegram-order]").href = `https://t.me/freshbatch_coffee?text=${encodedMessage}`;
-        document.querySelector("[data-telegram-share]").href = `https://t.me/share/url?url=${encodeURIComponent(siteUrl)}&text=${encodedMessage}`;
-        document.querySelector("[data-whatsapp-order]").href = `https://wa.me/74951284590?text=${encodedMessage}`;
+        currentOrderNumber = String(Date.now()).slice(-6);
+        refreshReceiptMessage();
         document.querySelector("[data-receipt-copy-status]").textContent = "";
 
         const receipt = document.querySelector("[data-receipt]");
         const receiptTitle = document.createElement("p");
         receiptTitle.className = "font-heading text-base font-bold";
-        receiptTitle.textContent = `Заказ #${orderNumber} для ${leadForm.elements.name.value}`;
+        receiptTitle.textContent = `Заказ #${currentOrderNumber} для ${leadForm.elements.name.value}`;
         const receiptItems = document.createElement("ul");
         receiptItems.className = "mt-3 space-y-2 border-b border-espresso/10 pb-3 text-sm";
         cart.forEach((item) => {
@@ -1357,6 +1424,12 @@
           discountLine.textContent = `Скидка онлайн-бариста (15%): −${formatPrice(totals.baristaDiscount)}`;
           receiptTotals.append(discountLine);
         }
+        if (totals.promoDiscount > 0) {
+          const promoLine = document.createElement("p");
+          promoLine.className = "flex justify-between gap-3 text-green";
+          promoLine.textContent = `Скидка по промокоду DRIPO15 (−15%): −${formatPrice(totals.promoDiscount)}`;
+          receiptTotals.append(promoLine);
+        }
 
         const totalLine = document.createElement("p");
         totalLine.className = "flex justify-between gap-3 border-t border-espresso/10 pt-3 font-bold";
@@ -1365,15 +1438,23 @@
         receipt.replaceChildren(receiptTitle, receiptItems, receiptTotals);
 
         const confirmationMessage = document.querySelector("[data-confirmation-message]");
-        confirmationMessage.textContent = "Заказ собран в браузере. Отправьте чек бариста через Telegram или WhatsApp — оплата в этом портфолио работает только в демо-режиме.";
+        confirmationMessage.textContent = leadForm.elements.payment.value === "sbp"
+          ? "Заказ собран. Сначала подтвердите демо-оплату по СБП, затем отправьте чек бариста через Telegram или WhatsApp."
+          : "Заказ собран. Отправьте чек бариста через Telegram или WhatsApp.";
         const sbpDemo = document.querySelector("[data-sbp-demo]");
         const simulatePaymentButton = document.querySelector("[data-simulate-sbp-payment]");
         const paymentStatus = document.querySelector("[data-payment-status]");
         const isSbpPayment = leadForm.elements.payment.value === "sbp";
         sbpDemo.hidden = !isSbpPayment;
-        paymentStatus.textContent = isSbpPayment ? "Статус: ожидает оплаты (демо)" : "Статус: оплата при получении";
+        paymentStatus.textContent = isSbpPayment
+          ? `⏳ Ожидает оплаты по СБП (${formatPrice(totals.total)})`
+          : "Статус: оплата при получении";
+        paymentStatus.className = isSbpPayment
+          ? "mt-3 rounded-lg bg-gold/20 px-3 py-2 text-sm font-bold text-espresso"
+          : "mt-3 rounded-lg bg-espresso/5 px-3 py-2 text-sm font-bold text-espresso";
         simulatePaymentButton.disabled = !isSbpPayment;
         simulatePaymentButton.classList.toggle("opacity-50", !isSbpPayment);
+        simulatePaymentButton.textContent = "Подтвердить оплату по СБП (Демо)";
 
         leadForm.classList.add("pointer-events-none", "opacity-0");
         window.setTimeout(() => {
@@ -1393,8 +1474,11 @@
         if (leadForm.elements.payment.value !== "sbp") {
           return;
         }
-        document.querySelector("[data-payment-status]").textContent = "✅ Оплачено (Демо-режим)";
-        button.textContent = "Оплата отмечена (демо)";
+        const paymentStatus = document.querySelector("[data-payment-status]");
+        paymentStatus.textContent = "✅ Оплачено (Демо-режим)! Заказ передан обжарщику";
+        paymentStatus.className = "mt-3 rounded-lg bg-green/15 px-3 py-2 text-sm font-bold text-green";
+        refreshReceiptMessage(true);
+        button.textContent = "Оплата подтверждена (демо)";
         button.disabled = true;
         button.classList.add("opacity-60", "cursor-not-allowed");
       });
@@ -1457,13 +1541,21 @@
         }
       });
 
+      document.querySelector("[data-reapply-promo]").addEventListener("click", () => {
+        reapplyPromoForNextOrder = true;
+        document.querySelector("#new-request").click();
+      });
+
       document.querySelector("#new-request").addEventListener("click", () => {
+        const shouldReapplyPromo = reapplyPromoForNextOrder;
+        reapplyPromoForNextOrder = false;
         leadForm.reset();
         phoneDigits = "";
         phoneInput.setCustomValidity("");
         updatePhoneInput();
         cart.splice(0, cart.length);
         discountActive = false;
+        promoCodeActive = false;
         selectedTaste = "";
         selectedBrew = "";
         recommendedProduct = null;
@@ -1491,7 +1583,12 @@
         });
         document.querySelector("[data-receipt-copy-status]").textContent = "";
         document.querySelector("[data-payment-status]").textContent = "";
-        document.querySelector("[data-simulate-sbp-payment]").textContent = "Симулировать оплату по СБП (Демо)";
+        document.querySelector("[data-promo-status]").textContent = "";
+        document.querySelector("#checkout-promo").value = shouldReapplyPromo ? "DRIPO15" : "";
+        if (shouldReapplyPromo) {
+          applyPromoCode();
+        }
+        document.querySelector("[data-simulate-sbp-payment]").textContent = "Подтвердить оплату по СБП (Демо)";
         document.querySelector("[data-simulate-sbp-payment]").disabled = false;
         document.querySelector("[data-simulate-sbp-payment]").classList.remove("opacity-50", "opacity-60", "cursor-not-allowed");
         document.querySelector("[data-sbp-demo]").hidden = false;
