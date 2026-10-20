@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Свежая Партия — кофейня-обжарка: спешелти-кофе, дрипы, десерты с доставкой за 2 часа</title>
     <meta name="description" content="Обжариваем спешелти-зерно 84+ баллов каждый вторник и пятницу. Доставка зерна, дрип-пакетов и десертов за 2 часа. Гарантия вкуса: заменим или вернём деньги. Скидка 15% на первый заказ">
+    <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -32,7 +33,7 @@
         }
       };
     </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" integrity="sha384-uTYyvsSSUZeaPhb5RbKlQa0zY/WpX/QHfvg2mczXyBQOpkWPEDy9lczyp+w7SKXu" crossorigin="anonymous"></script>
     <style>
       @keyframes batch-marquee {
         from { transform: translateX(0); }
@@ -422,7 +423,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">750 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Эфиопия Иргачефф" data-price="750" data-grind-selector>Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="ethiopia-irghacheff" data-name="Эфиопия Иргачефф" data-price="750" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -449,7 +450,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">590 ₽ <span class="font-body text-xs font-medium text-espresso/55">/ 250 г</span></p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Бразилия Серрадо" data-price="590" data-grind-selector>Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="brazil-serrado" data-name="Бразилия Серрадо" data-price="590" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -471,7 +472,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">850 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Дрип-сет «Неделя без кофейни»" data-price="850">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="drip-set" data-name="Дрип-сет «Неделя без кофейни»" data-price="850">Заказать</button>
               </div>
             </article>
 
@@ -498,7 +499,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">1 190 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Стартовый набор «Три страны»" data-price="1190" data-grind-selector>Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="starter-set" data-name="Стартовый набор «Три страны»" data-price="1190" data-grind-selector>Заказать</button>
               </div>
             </article>
 
@@ -517,7 +518,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">380 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Базиликовый чизкейк с клубникой" data-price="380">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="strawberry-basil-cheesecake" data-name="Базиликовый чизкейк с клубникой" data-price="380">Заказать</button>
               </div>
             </article>
 
@@ -539,7 +540,7 @@
               </div>
               <div class="flex items-center justify-between gap-4 border-t border-espresso/10 px-5 py-4 sm:px-6">
                 <p class="font-heading text-xl font-bold text-terracotta">2 490 ₽</p>
-                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-name="Подарочный бокс «Партия на подарок»" data-price="2490">Заказать</button>
+                <button class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-terracotta px-5 text-sm font-bold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-cream hover:shadow-lg active:translate-y-0" type="button" data-order-product data-product-id="gift-box" data-name="Подарочный бокс «Партия на подарок»" data-price="2490">Заказать</button>
               </div>
             </article>
           </div>
@@ -602,8 +603,8 @@
                 <span class="block h-full w-0 rounded-full bg-terracotta transition-all duration-500 ease-out" data-shipping-bar></span>
               </div>
               <div class="mt-4 flex flex-wrap gap-2" data-upsells>
-                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-name="Базиликовый чизкейк с клубникой" data-price="380">+ Базиликовый чизкейк (380 ₽)</button>
-                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-name="Дрип-сет «Неделя без кофейни»" data-price="850">+ Дрип-сет (850 ₽)</button>
+                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-product-id="strawberry-basil-cheesecake" data-name="Базиликовый чизкейк с клубникой" data-price="380">+ Базиликовый чизкейк (380 ₽)</button>
+                <button class="min-h-[42px] rounded-full border border-espresso/15 bg-cream px-3 py-2 text-xs font-bold text-espresso transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta" type="button" data-upsell data-product-id="drip-set" data-name="Дрип-сет «Неделя без кофейни»" data-price="850">+ Дрип-сет (850 ₽)</button>
               </div>
             </div>
 
@@ -634,6 +635,11 @@
             </div>
 
             <form id="lead-form" class="mt-6 space-y-5 border-t border-espresso/10 pt-6 transition-opacity duration-300 ease-out">
+              <div class="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label for="order-website">Не заполняйте это поле</label>
+                <input id="order-website" type="text" name="website" tabindex="-1" autocomplete="off" data-honeypot>
+              </div>
+              <p class="hidden rounded-lg bg-red-100 px-3 py-2 text-sm font-semibold text-red-800" data-server-error role="alert"></p>
               <fieldset>
                 <legend class="mb-2 text-sm font-semibold">Как получить заказ</legend>
                 <div class="grid grid-cols-2 gap-2">
@@ -1089,7 +1095,7 @@
       function productFromButton(button) {
         const grindSelector = button.closest("article").querySelector("[data-grind]");
         return {
-          id: button.dataset.name,
+          id: button.dataset.productId,
           name: button.dataset.name,
           price: Number(button.dataset.price),
           grind: grindSelector ? grindSelector.value : ""
@@ -1106,7 +1112,7 @@
       document.querySelectorAll("[data-upsell]").forEach((button) => {
         button.addEventListener("click", () => {
           addToCart({
-            id: button.dataset.name,
+            id: button.dataset.productId,
             name: button.dataset.name,
             price: Number(button.dataset.price),
             grind: ""
@@ -1370,7 +1376,55 @@
         document.querySelector("[data-whatsapp-order]").href = `https://wa.me/74951284590?text=${encodedMessage}`;
       }
 
-      leadForm.addEventListener("submit", (event) => {
+      async function sendOrderToServer() {
+        const isGitHubPages = window.location.hostname.endsWith(".github.io")
+          || window.location.hostname === "github.io";
+        if (window.location.protocol === "file:" || isGitHubPages) {
+          return { ok: true, demo: true };
+        }
+
+        const order = {
+          website: leadForm.elements.website.value,
+          name: leadForm.elements.name.value,
+          phone: phoneInput.value,
+          fulfillment: leadForm.elements.fulfillment.value,
+          payment: leadForm.elements.payment.value,
+          messenger_confirmation: leadForm.elements["messenger-confirmation"].checked,
+          barista_discount: discountActive,
+          promo_code: promoCodeActive ? document.querySelector("#checkout-promo").value : "",
+          items: cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+            grind: item.grind || ""
+          }))
+        };
+
+        let response;
+        try {
+          response = await fetch("./send.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(order)
+          });
+        } catch (error) {
+          return { ok: false, message: "Не удалось связаться с сервером. Проверьте подключение и попробуйте ещё раз." };
+        }
+
+        if (!response.ok) {
+          return { ok: false, message: "Не удалось отправить заказ. Попробуйте ещё раз или свяжитесь с нами." };
+        }
+
+        try {
+          const result = await response.json();
+          return result.ok === true
+            ? { ok: true, demo: false }
+            : { ok: false, message: "Сервер не подтвердил отправку заказа. Попробуйте ещё раз." };
+        } catch (error) {
+          return { ok: false, message: "Сервер вернул некорректный ответ. Попробуйте ещё раз." };
+        }
+      }
+
+      leadForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         if (cart.length === 0) {
@@ -1380,6 +1434,18 @@
         }
 
         if (!leadForm.reportValidity()) {
+          return;
+        }
+
+        const serverError = document.querySelector("[data-server-error]");
+        const submitButton = leadForm.querySelector("[type='submit']");
+        serverError.classList.add("hidden");
+        submitButton.disabled = true;
+        const submission = await sendOrderToServer();
+        submitButton.disabled = false;
+        if (!submission.ok) {
+          serverError.textContent = submission.message;
+          serverError.classList.remove("hidden");
           return;
         }
 
