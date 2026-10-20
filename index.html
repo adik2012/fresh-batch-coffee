@@ -136,7 +136,17 @@
               Обжариваем спешелти-зерно 84+ баллов каждый вторник и пятницу и привозим за 2 часа — вместе с дрип-пакетами и десертами из нашей пекарни. Не понравился вкус? Заменим бесплатно.
             </p>
 
-            <ul class="mt-8 grid gap-3 sm:grid-cols-3" aria-label="Наши преимущества">
+            <div class="mt-7 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+              <a class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-terracotta px-6 py-3 text-center text-sm font-bold text-cream shadow-[0_12px_30px_rgba(226,98,43,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 sm:w-auto sm:text-base" href="#catalog">
+                Выбрать кофе со скидкой 15%
+                <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
+              </a>
+              <a class="group text-sm font-semibold leading-relaxed text-cream/75 transition-all duration-300 ease-out hover:text-cream" href="#form">
+                Не разбираетесь в сортах? Подберём за 3 вопроса <span class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <ul class="mt-7 grid gap-3 sm:grid-cols-3" aria-label="Наши преимущества">
               <li class="flex h-full items-start gap-3 rounded-2xl border border-cream/10 bg-cream/[0.07] p-4 shadow-[0_14px_34px_rgba(12,7,3,0.18)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-terracotta/35">
                 <i class="mt-0.5 h-5 w-5 shrink-0 text-terracotta" data-lucide="flame" stroke-width="1.75" aria-hidden="true"></i>
                 <span class="text-sm leading-relaxed text-cream/75"><strong class="mb-1 block text-sm font-bold text-cream">Обжарка вт и пт</strong>Отправляем зерно в день обжарки, дата — на каждой пачке</span>
@@ -151,15 +161,6 @@
               </li>
             </ul>
 
-            <div class="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <a class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-terracotta px-6 py-3 text-center text-sm font-bold text-cream shadow-[0_12px_30px_rgba(226,98,43,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 sm:w-auto sm:text-base" href="#catalog">
-                Выбрать кофе со скидкой 15%
-                <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
-              </a>
-              <a class="group text-sm font-semibold leading-relaxed text-cream/75 transition-all duration-300 ease-out hover:text-cream" href="#form">
-                Не разбираетесь в сортах? Подберём за 3 вопроса <span class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true">→</span>
-              </a>
-            </div>
           </div>
 
           <div class="relative mx-auto w-full max-w-lg lg:col-span-5 lg:max-w-none">
@@ -171,11 +172,11 @@
                 <span class="h-2 w-2 shrink-0 rounded-full bg-terracotta" aria-hidden="true"></span>
                 Ближайшая обжарка: вторник и пятница
               </div>
-              <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <div class="absolute bottom-0 left-0 right-0 p-6 pb-8 pr-36 sm:p-8 sm:pb-10 sm:pr-44">
                 <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cream/70">Малые партии · Бережная обжарка</p>
                 <p class="mt-2 max-w-xs font-heading text-xl leading-snug text-cream sm:text-2xl">Свежесть, которую видно по дате</p>
               </div>
-              <div class="absolute bottom-24 right-4 flex h-32 w-32 rotate-12 flex-col items-center justify-center rounded-full border-2 border-dashed border-terracotta bg-cream text-center text-[10px] font-extrabold leading-tight tracking-[0.12em] text-espresso shadow-[0_12px_36px_rgba(14,7,3,0.4)] ring-4 ring-cream/20 sm:bottom-28 sm:right-7 sm:h-36 sm:w-36 sm:text-[11px]">
+              <div class="absolute bottom-44 right-4 flex h-32 w-32 rotate-12 flex-col items-center justify-center rounded-full border-2 border-dashed border-terracotta bg-cream text-center text-[10px] font-extrabold leading-tight tracking-[0.12em] text-espresso shadow-[0_12px_36px_rgba(14,7,3,0.4)] ring-4 ring-cream/20 sm:bottom-40 sm:right-7 sm:h-36 sm:w-36 sm:text-[11px]">
                 <span class="text-terracotta">ОБЖАРКА</span>
                 <span class="my-1 text-xs sm:text-sm">ВТ И ПТ</span>
                 <span class="h-px w-10 bg-terracotta/60" aria-hidden="true"></span>
@@ -288,7 +289,7 @@
 
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
             <article class="group relative isolate flex min-h-[360px] h-full flex-col justify-end overflow-hidden rounded-3xl border border-espresso/10 bg-espresso shadow-[0_18px_48px_rgba(43,26,15,0.16)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_64px_rgba(43,26,15,0.24)] lg:min-h-[420px]">
-              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1200&q=85" alt="Свежие кофейные зёрна крупным планом" loading="lazy">
+              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1200&q=85" alt="Пачка свежеобжаренного кофе" loading="lazy">
               <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2B1A0F] via-[#2B1A0F]/65 to-transparent" aria-hidden="true"></div>
               <div class="absolute left-5 top-5 inline-flex items-center gap-3 rounded-2xl border border-[#FAF5EE]/20 bg-[#FAF5EE]/15 px-4 py-3 text-cream shadow-[0_12px_32px_rgba(20,10,4,0.18)] backdrop-blur-md sm:left-7 sm:top-7">
                 <span class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 bg-cream/10 text-terracotta">
@@ -312,7 +313,7 @@
             </article>
 
             <article class="group relative isolate flex min-h-[360px] h-full flex-col justify-end overflow-hidden rounded-3xl border border-espresso/10 bg-espresso shadow-[0_18px_48px_rgba(43,26,15,0.16)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_64px_rgba(43,26,15,0.24)] lg:min-h-[420px]">
-              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=85" alt="Дрип-кофе заваривается прямо в чашке" loading="lazy">
+              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=85" alt="Приготовление кофе и кофейные чашки" loading="lazy">
               <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2B1A0F] via-[#2B1A0F]/65 to-transparent" aria-hidden="true"></div>
               <div class="absolute left-5 top-5 inline-flex items-center gap-3 rounded-2xl border border-[#FAF5EE]/20 bg-[#FAF5EE]/15 px-4 py-3 text-cream shadow-[0_12px_32px_rgba(20,10,4,0.18)] backdrop-blur-md sm:left-7 sm:top-7">
                 <span class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 bg-cream/10 text-terracotta">
@@ -336,7 +337,7 @@
             </article>
 
             <article class="group relative isolate flex min-h-[360px] h-full flex-col justify-end overflow-hidden rounded-3xl border border-espresso/10 bg-espresso shadow-[0_18px_48px_rgba(43,26,15,0.16)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_64px_rgba(43,26,15,0.24)] lg:min-h-[420px]">
-              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=85" alt="Бариста готовит кофе в кофейне" loading="lazy">
+              <img class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=85" alt="Вывеска кофейни" loading="lazy">
               <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2B1A0F] via-[#2B1A0F]/65 to-transparent" aria-hidden="true"></div>
               <div class="absolute left-5 top-5 inline-flex items-center gap-3 rounded-2xl border border-[#FAF5EE]/20 bg-[#FAF5EE]/15 px-4 py-3 text-cream shadow-[0_12px_32px_rgba(20,10,4,0.18)] backdrop-blur-md sm:left-7 sm:top-7">
                 <span class="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 bg-cream/10 text-terracotta">
@@ -400,7 +401,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Эфиопия Иргачефф" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Эфиопия Иргачефф" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-terracotta px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ХИТ</span>
                   <span class="absolute bottom-4 right-4 rounded-full border border-white/50 bg-cream/90 px-3 py-1.5 text-xs font-semibold text-espresso shadow-lg backdrop-blur-md">Обжарено на этой неделе</span>
                 </div>
@@ -428,7 +429,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Бразилия Серрадо" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=85" alt="Кофейные зёрна Бразилия Серрадо" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-espresso px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ВЫГОДНО</span>
                 </div>
                 <div class="p-5 sm:p-6">
@@ -455,7 +456,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85" alt="Дрип-сет с кофе разных сортов" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=85" alt="Дрип-сет с кофе разных сортов" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-terracotta px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">ХИТ</span>
                 </div>
                 <div class="p-5 sm:p-6">
@@ -477,7 +478,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=85" alt="Стартовый набор кофе из трёх стран" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=900&q=85" alt="Стартовый набор кофе из трёх стран" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-[#D9A441] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-espresso shadow-lg">ДЛЯ НОВИЧКОВ</span>
                 </div>
                 <div class="p-5 sm:p-6">
@@ -504,7 +505,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Базиликовый чизкейк с клубникой" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85" alt="Светлый чизкейк, украшенный клубникой и ягодами" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-green px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cream shadow-lg">NEW</span>
                 </div>
                 <div class="p-5 sm:p-6">
@@ -523,7 +524,7 @@
             <article class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-espresso/10 bg-cream shadow-[0_16px_42px_rgba(43,26,15,0.1)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(43,26,15,0.18)]">
               <div>
                 <div class="group relative aspect-[4/3] overflow-hidden bg-[#E9DDCE]">
-                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85" alt="Подарочный бокс с дрип-пакетами и чашкой" loading="lazy">
+                  <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=900&q=85" alt="Керамическая чашка для подарочного кофейного набора" loading="lazy">
                   <span class="absolute left-4 top-4 rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-espresso shadow-lg">ПОДАРОК</span>
                 </div>
                 <div class="p-5 sm:p-6">
@@ -963,7 +964,7 @@
 
         cart.forEach((item) => {
           const row = document.createElement("li");
-          row.className = "flex items-start justify-between gap-3 rounded-xl border border-espresso/10 bg-white p-3";
+          row.className = "flex items-center justify-between gap-3 rounded-xl border border-espresso/10 bg-white p-3";
 
           const detail = document.createElement("div");
           detail.className = "min-w-0 flex-1";
@@ -985,7 +986,7 @@
           detail.append(amount);
 
           const controls = document.createElement("div");
-          controls.className = "flex shrink-0 flex-col items-end gap-2";
+          controls.className = "flex shrink-0 items-center gap-2";
           const quantityControls = document.createElement("div");
           quantityControls.className = "flex items-center gap-1";
 
@@ -1008,9 +1009,9 @@
           });
 
           const remove = document.createElement("button");
-          remove.className = "text-[11px] font-semibold text-espresso/50 underline decoration-espresso/20 underline-offset-2 transition-all duration-300 ease-out hover:text-terracotta";
+          remove.className = "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-espresso/10 text-lg font-semibold text-espresso/50 transition-all duration-300 ease-out hover:border-terracotta hover:text-terracotta";
           remove.type = "button";
-          remove.textContent = "Удалить";
+          remove.textContent = "×";
           remove.dataset.cartAction = "remove";
           remove.dataset.cartKey = item.key;
           remove.setAttribute("aria-label", `Удалить ${item.name} из заказа`);
