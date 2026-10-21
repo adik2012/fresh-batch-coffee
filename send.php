@@ -67,6 +67,131 @@ if ($honeypot !== '') {
     respond(400, ['ok' => false, 'message' => 'Invalid order.']);
 }
 
+$nameInput = $payload['name'] ?? null;
+$phoneInput = $payload['phone'] ?? null;
+$fulfillment = $payload['fulfillment'] ?? null;
+$addressInput = $payload['address'] ?? '';
+$payment = $payload['payment'] ?? null;
+$items = $payload['items'] ?? null;
+$messengerConfirmation = $payload['messenger_confirmation'] ?? null;
+$promoCode = $payload['promo_code'] ?? '';
+
+if (
+    !is_string($nameInput)
+    || !is_string($phoneInput)
+    || !in_array($fulfillment, ['delivery', 'pickup'], true)
+    || !is_string($addressInput)
+    || !in_array($payment, ['sbp', 'on-receipt'], true)
+    || !is_bool($messengerConfirmation)
+    || !is_string($promoCode)
+    || !is_array($items)
+    || count($items) < 1
+    || count($items) > 20
+) {
+    respond(422, ['ok' => false, 'message' => 'Order details are incomplete or invalid.']);
+}
+
+$addressText = strip_tags($addressInput);
+$addressText = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $addressText) ?? '';
+$addressText = trim(preg_replace('/\s+/u', ' ', $addressText) ?? '');
+preg_match_all('/./us', $addressText, $addressCharacters);
+if (
+    $fulfillment === 'delivery'
+    && (count($addressCharacters[0]) < 5 || count($addressCharacters[0]) > 200)
+) {
+    respond(422, ['ok' => false, 'message' => 'Please provide a valid delivery address.']);
+}
+$address = htmlText($addressText);
+
+$promoCode = cleanText($promoCode, 32);
+$name = cleanText($nameInput, 80);
+if ($name === '') {
+    respond(422, ['ok' => false, 'message' => 'Please provide your name.']);
+}
+
+$phoneDigits = preg_replace('/\D+/', '', strip_tags($phoneInput)) ?? '';
+if (strlen($phoneDigits) === 11 && ($phoneDigits[0] === '7' || $phoneDigits[0] === '8')) {
+    $phoneDigits = substr($phoneDigits, 1);
+}
+if (strlen($phoneDigits) !== 10) {
+    respond(422, ['ok' => false, 'message' => 'Please provide a valid phone number.']);
+}
+$phone = '+7 (' . substr($phoneDigits, 0, 3) . ') '
+    . substr($phoneDigits, 3, 3) . '-'
+    . substr($phoneDigits, 6, 2) . '-'
+    . substr($phoneDigits, 8, 2);
+$phone = htmlText($phone);
+
+$catalog = [
+    'ethiopia-irghacheff' => ['name' => 'Эфиопия Иргачефф', 'price' => 750],
+    'brazil-serrado' => ['name' => 'Бразилия Серрадо', 'price' => 590],
+    'drip-set' => ['name' => 'Дрип-сет «Неделя без кофейни»', 'price' => 850],
+    'starter-set' => ['name' => 'Стартовый набор «Три страны»', 'price' => 1190],
+    'strawberry-basil-cheesecake' => ['name' => 'Базиликовый чизкейк с клубникой', 'price' => 380],
+    'gift-box' => ['name' => 'Подарочный бокс «Партия на подарок»', 'price' => 2490],
+    'drip-sample' => ['name' => 'Пробник дрипа', 'price' => 0],
+];
+$allowedGrinds = ['', 'В зёрнах', 'Под фильтр', 'Под эспрессо', 'Под турку'];
+$orderItemsByKey = [];
+$subtotal = 0;
+$paidSubtotal = 0;
+$sampleQty = 0;
+
+foreach ($items as $item) {
+    if (!is_array($item)) {
+        respond(422, ['ok' => false, 'message' => 'Invalid order item.']);
+    }
+
+    $productId = $item['id'] ?? null;
+    $quantity = $item['quantity'] ?? null;
+    $grind = $item['grind'] ?? '';
+    if (
+        !is_string($productId)
+        || !isset($catalog[$productId])
+        || !is_int($quantity)
+        || $quantity < 1
+        || $quantity > 50
+        || !is_string($grind)
+        || !in_array($grind, $allowedGrinds, true)
+    ) {
+        respond(422, ['ok' => false, 'message' => 'Invalid order item.']);
+    }
+
+    $product = $catalog[$productId];
+    $lineTotal = $product['price'] * $quantity;
+    $itemKey = $productId . "\0" . $grind;
+    if (isset($orderItemsByKey[$itemKey])) {
+        if ($orderItemsByKey[$itemKey]['quantity'] + $quantity > 50) {
+            respond(422, ['ok' => false, 'message' => 'Invalid order.']);
+        }
+        $orderItemsByKey[$itemKey]['quantity'] += $quantity;
+        $orderItemsByKey[$itemKey]['line_total'] += $lineTotal;
+    } else {
+        $orderItemsByKey[$itemKey] = [
+            'name' => htmlText($product['name']),
+            'quantity' => $quantity,
+            'grind' => $grind === '' ? '' : htmlText(cleanText($grind, 32)),
+            'line_total' => $lineTotal,
+        ];
+    }
+    $subtotal += $lineTotal;
+    if ($product['price'] > 0) {
+        $paidSubtotal += $lineTotal;
+    }
+    if ($productId === 'drip-sample') {
+        $sampleQty += $quantity;
+    }
+}
+
+if ($paidSubtotal <= 0 || $sampleQty > 1) {
+    respond(422, ['ok' => false, 'message' => 'Invalid order.']);
+}
+$orderItems = array_values($orderItemsByKey);
+
+if ($promoCode !== '' && strtoupper(trim($promoCode)) !== 'DRIPO15') {
+    respond(422, ['ok' => false, 'message' => 'Invalid promo code.']);
+}
+
 $remoteAddress = $_SERVER['REMOTE_ADDR'] ?? '';
 if (filter_var($remoteAddress, FILTER_VALIDATE_IP) === false) {
     respond(400, ['ok' => false, 'message' => 'Unable to validate request source.']);
@@ -122,104 +247,12 @@ if (
     respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
 }
 
-$nameInput = $payload['name'] ?? null;
-$phoneInput = $payload['phone'] ?? null;
-$fulfillment = $payload['fulfillment'] ?? null;
-$payment = $payload['payment'] ?? null;
-$items = $payload['items'] ?? null;
-$messengerConfirmation = $payload['messenger_confirmation'] ?? null;
-$baristaDiscountActive = $payload['barista_discount'] ?? null;
-$promoCode = $payload['promo_code'] ?? '';
-
-if (
-    !is_string($nameInput)
-    || !is_string($phoneInput)
-    || !in_array($fulfillment, ['delivery', 'pickup'], true)
-    || !in_array($payment, ['sbp', 'on-receipt'], true)
-    || !is_bool($messengerConfirmation)
-    || !is_bool($baristaDiscountActive)
-    || !is_string($promoCode)
-    || !is_array($items)
-    || count($items) < 1
-    || count($items) > 20
-) {
-    respond(422, ['ok' => false, 'message' => 'Order details are incomplete or invalid.']);
-}
-
-$promoCode = cleanText($promoCode, 32);
-$name = cleanText($nameInput, 80);
-if ($name === '') {
-    respond(422, ['ok' => false, 'message' => 'Please provide your name.']);
-}
-
-$phoneDigits = preg_replace('/\D+/', '', strip_tags($phoneInput)) ?? '';
-if (strlen($phoneDigits) === 11 && ($phoneDigits[0] === '7' || $phoneDigits[0] === '8')) {
-    $phoneDigits = substr($phoneDigits, 1);
-}
-if (strlen($phoneDigits) !== 10) {
-    respond(422, ['ok' => false, 'message' => 'Please provide a valid phone number.']);
-}
-$phone = '+7 (' . substr($phoneDigits, 0, 3) . ') '
-    . substr($phoneDigits, 3, 3) . '-'
-    . substr($phoneDigits, 6, 2) . '-'
-    . substr($phoneDigits, 8, 2);
-$phone = htmlText($phone);
-
-$catalog = [
-    'ethiopia-irghacheff' => ['name' => 'Эфиопия Иргачефф', 'price' => 750],
-    'brazil-serrado' => ['name' => 'Бразилия Серрадо', 'price' => 590],
-    'drip-set' => ['name' => 'Дрип-сет «Неделя без кофейни»', 'price' => 850],
-    'starter-set' => ['name' => 'Стартовый набор «Три страны»', 'price' => 1190],
-    'strawberry-basil-cheesecake' => ['name' => 'Базиликовый чизкейк с клубникой', 'price' => 380],
-    'gift-box' => ['name' => 'Подарочный бокс «Партия на подарок»', 'price' => 2490],
-    'drip-sample' => ['name' => 'Пробник дрипа', 'price' => 0],
-];
-$allowedGrinds = ['', 'В зёрнах', 'Под фильтр', 'Под эспрессо', 'Под турку'];
-$orderItems = [];
-$subtotal = 0;
-
-foreach ($items as $item) {
-    if (!is_array($item)) {
-        respond(422, ['ok' => false, 'message' => 'Invalid order item.']);
-    }
-
-    $productId = $item['id'] ?? null;
-    $quantity = $item['quantity'] ?? null;
-    $grind = $item['grind'] ?? '';
-    if (
-        !is_string($productId)
-        || !isset($catalog[$productId])
-        || !is_int($quantity)
-        || $quantity < 1
-        || $quantity > 50
-        || !is_string($grind)
-        || !in_array($grind, $allowedGrinds, true)
-    ) {
-        respond(422, ['ok' => false, 'message' => 'Invalid order item.']);
-    }
-
-    $product = $catalog[$productId];
-    $subtotal += $product['price'] * $quantity;
-    $orderItems[] = [
-        'name' => htmlText($product['name']),
-        'quantity' => $quantity,
-        'grind' => $grind === '' ? '' : htmlText(cleanText($grind, 32)),
-        'line_total' => $product['price'] * $quantity,
-    ];
-}
-
-if ($promoCode !== '' && strtoupper(trim($promoCode)) !== 'DRIPO15') {
-    respond(422, ['ok' => false, 'message' => 'Invalid promo code.']);
-}
-
 $pickupDiscount = $fulfillment === 'pickup' ? (int) round($subtotal * 0.10) : 0;
 $discountedSubtotal = $subtotal - $pickupDiscount;
-$baristaDiscount = $baristaDiscountActive ? (int) round($discountedSubtotal * 0.15) : 0;
-$afterBaristaDiscount = $discountedSubtotal - $baristaDiscount;
 $promoDiscount = strtoupper(trim($promoCode)) === 'DRIPO15'
-    ? (int) round($afterBaristaDiscount * 0.15)
+    ? (int) round($discountedSubtotal * 0.15)
     : 0;
-$total = $afterBaristaDiscount - $promoDiscount;
+$total = $discountedSubtotal - $promoDiscount;
 
 $itemLines = [];
 foreach ($orderItems as $item) {
@@ -238,13 +271,13 @@ $message = implode("\n", [
     '',
     '<b>Состав заказа:</b>',
     ...$itemLines,
-    '',
-    'Получение: ' . ($fulfillment === 'pickup' ? 'Самовывоз' : 'Доставка'),
+    $fulfillment === 'pickup'
+        ? 'Адрес кофейни: ' . htmlText('г. Москва, ул. Покровка, 24, стр. 2')
+        : 'Адрес доставки: ' . $address,
     'Оплата: ' . ($payment === 'sbp' ? 'СБП (не оплачено)' : 'При получении'),
     'Подтверждение: ' . ($messengerConfirmation ? 'написать в мессенджер' : 'позвонить'),
     'Сумма товаров: ' . number_format($subtotal, 0, ',', ' ') . ' ₽',
     'Скидка самовывоза: ' . number_format($pickupDiscount, 0, ',', ' ') . ' ₽',
-    'Скидка онлайн-бариста: ' . number_format($baristaDiscount, 0, ',', ' ') . ' ₽',
     'Скидка DRIPO15: ' . number_format($promoDiscount, 0, ',', ' ') . ' ₽',
     '<b>Итого: ' . number_format($total, 0, ',', ' ') . ' ₽</b>',
 ]);

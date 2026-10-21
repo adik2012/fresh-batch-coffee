@@ -138,7 +138,7 @@
             </p>
 
             <div class="mt-7 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <a class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-terracotta px-6 py-3 text-center text-sm font-bold text-cream shadow-[0_12px_30px_rgba(226,98,43,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 sm:w-auto sm:text-base" href="#catalog">
+              <a class="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-terracotta px-6 py-3 text-center text-sm font-bold text-cream shadow-[0_12px_30px_rgba(226,98,43,0.3)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta-hover hover:shadow-lg active:translate-y-0 sm:w-auto sm:text-base" href="#catalog" data-apply-promo-on-click>
                 Выбрать кофе со скидкой 15%
                 <i class="ml-2 h-5 w-5" data-lucide="arrow-right" stroke-width="1.75" aria-hidden="true"></i>
               </a>
@@ -627,7 +627,6 @@
               </div>
               <div class="mt-4 space-y-2 border-t border-espresso/10 pt-4 text-sm">
                 <div class="flex justify-between gap-3 text-espresso/65"><span>Сумма товаров</span><span data-subtotal>0 ₽</span></div>
-                <div class="hidden justify-between gap-3 text-green" data-discount-row><span>Скидка онлайн-бариста · 15%</span><span data-discount-amount>−0 ₽</span></div>
                 <div class="hidden justify-between gap-3 text-green" data-pickup-row><span>Самовывоз · 10%</span><span data-pickup-amount>−0 ₽</span></div>
                 <div class="hidden justify-between gap-3 text-green" data-promo-discount-row><span>Скидка по промокоду DRIPO15 (−15%)</span><span data-promo-discount-amount>−0 ₽</span></div>
                 <div class="flex justify-between gap-3 border-t border-espresso/10 pt-3 font-bold"><span>Итого к оплате</span><span class="font-heading text-xl text-terracotta" data-order-total>0 ₽</span></div>
@@ -653,6 +652,12 @@
                   </label>
                 </div>
               </fieldset>
+              <div class="max-h-24 overflow-hidden opacity-100 transition-all duration-300 ease-out" data-address-field>
+                <label class="block">
+                  <span class="mb-2 block text-sm font-semibold">Адрес доставки (улица, дом, кв./офис)</span>
+                  <input class="min-h-[50px] w-full rounded-xl border border-espresso/15 bg-white px-4 text-base text-espresso outline-none transition-all duration-300 ease-out placeholder:text-espresso/40 focus:border-terracotta focus:ring-4 focus:ring-terracotta/10" type="text" name="address" placeholder="Например, ул. Покровка, 24, кв. 12" autocomplete="street-address" minlength="5" maxlength="200" required data-address-input>
+                </label>
+              </div>
               <fieldset>
                 <legend class="mb-2 text-sm font-semibold">Способ оплаты</legend>
                 <div class="grid gap-2 sm:grid-cols-2">
@@ -885,6 +890,8 @@
 
       const leadForm = document.querySelector("#lead-form");
       const phoneInput = document.querySelector("#phone-input");
+      const addressInput = leadForm.elements.address;
+      const addressField = document.querySelector("[data-address-field]");
       const thankYouPanel = document.querySelector("#thank-you");
       const cartItemsElement = document.querySelector("[data-cart-items]");
       const cartEmptyMessage = document.querySelector("[data-cart-empty]");
@@ -898,7 +905,6 @@
       const paymentInputs = Array.from(leadForm.querySelectorAll("[data-payment]"));
       const cart = [];
       let phoneDigits = "";
-      let discountActive = false;
       let promoCodeActive = false;
       let reapplyPromoForNextOrder = false;
       let orderReceiptMessage = "";
@@ -916,6 +922,10 @@
         return cart.reduce((total, item) => total + item.price * item.quantity, 0);
       }
 
+      function getPaidSubtotal() {
+        return cart.reduce((total, item) => total + (item.price > 0 ? item.price * item.quantity : 0), 0);
+      }
+
       function getItemCount() {
         return cart.reduce((count, item) => count + item.quantity, 0);
       }
@@ -925,15 +935,13 @@
         const isPickup = leadForm.elements.fulfillment.value === "pickup";
         const pickupDiscount = isPickup ? Math.round(subtotal * 0.1) : 0;
         const discountedSubtotal = subtotal - pickupDiscount;
-        const baristaDiscount = discountActive ? Math.round(discountedSubtotal * 0.15) : 0;
-        const promoDiscountBase = discountedSubtotal - baristaDiscount;
-        const promoDiscount = promoCodeActive ? Math.round(promoDiscountBase * 0.15) : 0;
+        const promoDiscount = promoCodeActive ? Math.round(discountedSubtotal * 0.15) : 0;
         return {
           subtotal,
+          paidSubtotal: getPaidSubtotal(),
           pickupDiscount,
-          baristaDiscount,
           promoDiscount,
-          total: promoDiscountBase - promoDiscount,
+          total: discountedSubtotal - promoDiscount,
           isPickup
         };
       }
@@ -996,7 +1004,10 @@
           const quantityControls = document.createElement("div");
           quantityControls.className = "flex items-center gap-1";
 
-          [["−", "decrease", "Уменьшить количество"], [String(item.quantity), "quantity", `Количество: ${item.quantity}`], ["+", "increase", "Увеличить количество"]].forEach(([label, action, accessibleName]) => {
+          const itemControls = item.id === "drip-sample"
+            ? [[String(item.quantity), "quantity", `Количество: ${item.quantity}`]]
+            : [["−", "decrease", "Уменьшить количество"], [String(item.quantity), "quantity", `Количество: ${item.quantity}`], ["+", "increase", "Увеличить количество"]];
+          itemControls.forEach(([label, action, accessibleName]) => {
             const control = document.createElement("button");
             control.className = action === "quantity"
               ? "min-w-7 text-center text-xs font-bold"
@@ -1028,9 +1039,6 @@
 
         document.querySelector("[data-subtotal]").textContent = formatPrice(totals.subtotal);
         document.querySelector("[data-order-total]").textContent = formatPrice(totals.total);
-        document.querySelector("[data-discount-row]").classList.toggle("hidden", !discountActive);
-        document.querySelector("[data-discount-row]").classList.toggle("flex", discountActive);
-        document.querySelector("[data-discount-amount]").textContent = `−${formatPrice(totals.baristaDiscount)}`;
         document.querySelector("[data-pickup-row]").classList.toggle("hidden", !totals.isPickup);
         document.querySelector("[data-pickup-row]").classList.toggle("flex", totals.isPickup);
         document.querySelector("[data-pickup-amount]").textContent = `−${formatPrice(totals.pickupDiscount)}`;
@@ -1061,6 +1069,9 @@
         const key = `${product.id}|${product.grind || ""}`;
         const existingItem = cart.find((item) => item.key === key);
         if (existingItem) {
+          if (product.id === "drip-sample") {
+            return;
+          }
           existingItem.quantity += 1;
         } else {
           cart.push({ ...product, key, quantity: 1 });
@@ -1124,6 +1135,11 @@
         button.addEventListener("click", scrollToOrder);
       });
 
+      document.querySelector("[data-apply-promo-on-click]").addEventListener("click", () => {
+        document.querySelector("#checkout-promo").value = "DRIPO15";
+        applyPromoCode();
+      });
+
       cartItemsElement.addEventListener("click", (event) => {
         const actionButton = event.target.closest("[data-cart-action]");
         if (!actionButton) {
@@ -1134,7 +1150,9 @@
           return;
         }
         if (actionButton.dataset.cartAction === "increase") {
-          cart[index].quantity += 1;
+          if (cart[index].id !== "drip-sample") {
+            cart[index].quantity += 1;
+          }
         } else if (actionButton.dataset.cartAction === "decrease") {
           cart[index].quantity -= 1;
           if (cart[index].quantity === 0) {
@@ -1218,11 +1236,24 @@
         if (!recommendedProduct) {
           return;
         }
-        discountActive = true;
         addToCart(recommendedProduct);
         addToCart({ id: "drip-sample", name: "Пробник дрипа", price: 0, grind: "" });
+        document.querySelector("#checkout-promo").value = "DRIPO15";
+        applyPromoCode();
         scrollToOrder();
       });
+
+      function updateAddressField() {
+        const isPickup = leadForm.elements.fulfillment.value === "pickup";
+        addressInput.required = !isPickup;
+        addressInput.disabled = isPickup;
+        addressField.setAttribute("aria-hidden", String(isPickup));
+        addressField.classList.toggle("max-h-0", isPickup);
+        addressField.classList.toggle("max-h-24", !isPickup);
+        addressField.classList.toggle("opacity-0", isPickup);
+        addressField.classList.toggle("opacity-100", !isPickup);
+        addressField.classList.toggle("pointer-events-none", isPickup);
+      }
 
       fulfillmentInputs.forEach((input) => {
         input.addEventListener("change", () => {
@@ -1233,6 +1264,7 @@
             label.classList.toggle("border-espresso/15", !radio.checked);
             label.classList.toggle("bg-white", !radio.checked);
           });
+          updateAddressField();
           renderCart();
         });
       });
@@ -1344,6 +1376,8 @@
       function refreshReceiptMessage(isSbpPaid = false) {
         const totals = getOrderTotals();
         const fulfillment = totals.isPickup ? "Самовывоз" : "Доставка";
+        const pickupAddress = "г. Москва, ул. Покровка, 24, стр. 2";
+        const fulfillmentAddress = totals.isPickup ? pickupAddress : addressInput.value.trim();
         const payment = isSbpPaid
           ? "Оплачено по СБП"
           : leadForm.elements.payment.value === "sbp"
@@ -1361,7 +1395,7 @@
           `👤 Клиент: ${leadForm.elements.name.value}, ${phoneInput.value}`,
           "🛒 Состав заказа:",
           ...messageItems,
-          `🚚 Получение: ${fulfillment}`,
+          `🚚 ${totals.isPickup ? "Адрес кофейни" : "Адрес доставки"}: ${fulfillmentAddress}`,
           `💳 Оплата: ${payment}`,
           `💰 Итого к оплате: ${formatPrice(totals.total)}`,
           `💬 Пожелание: ${wish}`
@@ -1388,9 +1422,9 @@
           name: leadForm.elements.name.value,
           phone: phoneInput.value,
           fulfillment: leadForm.elements.fulfillment.value,
+          address: addressInput.value.trim(),
           payment: leadForm.elements.payment.value,
           messenger_confirmation: leadForm.elements["messenger-confirmation"].checked,
-          barista_discount: discountActive,
           promo_code: promoCodeActive ? document.querySelector("#checkout-promo").value : "",
           items: cart.map((item) => ({
             id: item.id,
@@ -1427,7 +1461,11 @@
       leadForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        if (cart.length === 0) {
+        const paidSubtotal = getPaidSubtotal();
+        if (paidSubtotal <= 0) {
+          cartErrorMessage.textContent = cart.length > 0
+            ? "Добавьте хотя бы один основной товар к бесплатному пробнику"
+            : "Добавьте хотя бы один товар, чтобы оформить заказ.";
           cartErrorMessage.classList.remove("hidden");
           cartErrorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
           return;
@@ -1474,6 +1512,12 @@
 
         const receiptTotals = document.createElement("div");
         receiptTotals.className = "mt-3 space-y-2 text-sm";
+        const fulfillmentAddressLine = document.createElement("p");
+        fulfillmentAddressLine.className = "leading-relaxed text-espresso/70";
+        fulfillmentAddressLine.textContent = totals.isPickup
+          ? "Самовывоз: г. Москва, ул. Покровка, 24, стр. 2"
+          : `Адрес доставки: ${addressInput.value.trim()}`;
+        receiptTotals.append(fulfillmentAddressLine);
         const subtotalLine = document.createElement("p");
         subtotalLine.className = "flex justify-between gap-3 text-espresso/65";
         subtotalLine.textContent = `Товары: ${formatPrice(totals.subtotal)}`;
@@ -1484,12 +1528,6 @@
           pickupLine.className = "flex justify-between gap-3 text-green";
           pickupLine.textContent = `Самовывоз (−10%): −${formatPrice(totals.pickupDiscount)}`;
           receiptTotals.append(pickupLine);
-        }
-        if (totals.baristaDiscount > 0) {
-          const discountLine = document.createElement("p");
-          discountLine.className = "flex justify-between gap-3 text-green";
-          discountLine.textContent = `Скидка онлайн-бариста (15%): −${formatPrice(totals.baristaDiscount)}`;
-          receiptTotals.append(discountLine);
         }
         if (totals.promoDiscount > 0) {
           const promoLine = document.createElement("p");
@@ -1621,7 +1659,6 @@
         phoneInput.setCustomValidity("");
         updatePhoneInput();
         cart.splice(0, cart.length);
-        discountActive = false;
         promoCodeActive = false;
         selectedTaste = "";
         selectedBrew = "";
@@ -1641,6 +1678,7 @@
           label.classList.toggle("border-espresso/15", !radio.checked);
           label.classList.toggle("bg-white", !radio.checked);
         });
+        updateAddressField();
         paymentInputs.forEach((radio) => {
           const label = radio.closest("label");
           label.classList.toggle("border-terracotta", radio.checked);
