@@ -1,3 +1,11 @@
+Options -Indexes
+
 <FilesMatch "^(config\.php|config\.example\.php|\.env)$">
   Require all denied
 </FilesMatch>
+
+<FilesMatch "^(CLAUDE\.md|structure\.md|README\.md)$">
+  Require all denied
+</FilesMatch>
+
+RedirectMatch 404 "(?i)/\.(git|github|claude|vscode)(/|$)"

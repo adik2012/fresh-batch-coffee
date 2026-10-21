@@ -15,13 +15,10 @@ function respond(int $status, array $body): void
 
 function cleanText(string $value, int $limit): string
 {
-    $value = strip_tags($value);
     $value = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $value) ?? '';
     $value = trim(preg_replace('/\s+/u', ' ', $value) ?? '');
-    $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    preg_match_all('/./us', $value, $characters);
 
-    return implode('', array_slice($characters[0], 0, $limit));
+    return mb_substr($value, 0, $limit);
 }
 
 function htmlText(string $value): string
@@ -74,6 +71,7 @@ $addressInput = $payload['address'] ?? '';
 $payment = $payload['payment'] ?? null;
 $items = $payload['items'] ?? null;
 $messengerConfirmation = $payload['messenger_confirmation'] ?? null;
+$personalDataConsent = $payload['personal_data_consent'] ?? null;
 $promoCode = $payload['promo_code'] ?? '';
 
 if (
@@ -83,6 +81,7 @@ if (
     || !is_string($addressInput)
     || !in_array($payment, ['sbp', 'on-receipt'], true)
     || !is_bool($messengerConfirmation)
+    || $personalDataConsent !== true
     || !is_string($promoCode)
     || !is_array($items)
     || count($items) < 1
@@ -91,17 +90,15 @@ if (
     respond(422, ['ok' => false, 'message' => 'Order details are incomplete or invalid.']);
 }
 
-$addressText = strip_tags($addressInput);
-$addressText = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $addressText) ?? '';
+$addressText = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $addressInput) ?? '';
 $addressText = trim(preg_replace('/\s+/u', ' ', $addressText) ?? '');
-preg_match_all('/./us', $addressText, $addressCharacters);
+$addressLength = mb_strlen($addressText);
 if (
     $fulfillment === 'delivery'
-    && (count($addressCharacters[0]) < 5 || count($addressCharacters[0]) > 200)
+    && ($addressLength < 5 || $addressLength > 200)
 ) {
     respond(422, ['ok' => false, 'message' => 'Please provide a valid delivery address.']);
 }
-$address = htmlText($addressText);
 
 $promoCode = cleanText($promoCode, 32);
 $name = cleanText($nameInput, 80);
@@ -120,7 +117,6 @@ $phone = '+7 (' . substr($phoneDigits, 0, 3) . ') '
     . substr($phoneDigits, 3, 3) . '-'
     . substr($phoneDigits, 6, 2) . '-'
     . substr($phoneDigits, 8, 2);
-$phone = htmlText($phone);
 
 $catalog = [
     'ethiopia-irghacheff' => ['name' => 'Эфиопия Иргачефф', 'price' => 750],
@@ -168,9 +164,9 @@ foreach ($items as $item) {
         $orderItemsByKey[$itemKey]['line_total'] += $lineTotal;
     } else {
         $orderItemsByKey[$itemKey] = [
-            'name' => htmlText($product['name']),
+            'name' => $product['name'],
             'quantity' => $quantity,
-            'grind' => $grind === '' ? '' : htmlText(cleanText($grind, 32)),
+            'grind' => $grind === '' ? '' : cleanText($grind, 32),
             'line_total' => $lineTotal,
         ];
     }
@@ -191,6 +187,62 @@ $orderItems = array_values($orderItemsByKey);
 if ($promoCode !== '' && strtoupper(trim($promoCode)) !== 'DRIPO15') {
     respond(422, ['ok' => false, 'message' => 'Invalid promo code.']);
 }
+
+$configPath = __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
+if (!is_file($configPath)) {
+    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
+}
+
+$config = require $configPath;
+if (!is_array($config)) {
+    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
+}
+
+$botToken = $config['TELEGRAM_BOT_TOKEN'] ?? '';
+$chatId = $config['TELEGRAM_CHAT_ID'] ?? '';
+if (
+    !is_string($botToken)
+    || !preg_match('/^\d+:[A-Za-z0-9_-]+$/', $botToken)
+    || !is_string($chatId)
+    || !preg_match('/^-?\d+$/', $chatId)
+) {
+    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
+}
+
+$pickupDiscount = $fulfillment === 'pickup' ? (int) round($subtotal * 0.10) : 0;
+$discountedSubtotal = $subtotal - $pickupDiscount;
+$promoDiscount = strtoupper(trim($promoCode)) === 'DRIPO15'
+    ? (int) round($discountedSubtotal * 0.15)
+    : 0;
+$total = $discountedSubtotal - $promoDiscount;
+
+$itemLines = [];
+foreach ($orderItems as $item) {
+    $line = '• ' . htmlText($item['name']);
+    if ($item['grind'] !== '') {
+        $line .= ', помол ' . htmlText($item['grind']);
+    }
+    $itemLines[] = $line . ' — ' . $item['quantity'] . ' шт. — '
+        . number_format($item['line_total'], 0, ',', ' ') . ' ₽';
+}
+
+$message = implode("\n", [
+    '<b>Новый заказ «Свежая Партия»</b>',
+    'Клиент: ' . htmlText($name),
+    'Телефон: ' . htmlText($phone),
+    '',
+    '<b>Состав заказа:</b>',
+    ...$itemLines,
+    $fulfillment === 'pickup'
+        ? 'Адрес кофейни: ' . htmlText('г. Москва, ул. Покровка, 24, стр. 2')
+        : 'Адрес доставки: ' . htmlText($addressText),
+    'Оплата: ' . ($payment === 'sbp' ? 'СБП (не оплачено)' : 'При получении'),
+    'Подтверждение: ' . ($messengerConfirmation ? 'написать в мессенджер' : 'позвонить'),
+    'Сумма товаров: ' . number_format($subtotal, 0, ',', ' ') . ' ₽',
+    'Скидка самовывоза: ' . number_format($pickupDiscount, 0, ',', ' ') . ' ₽',
+    'Скидка DRIPO15: ' . number_format($promoDiscount, 0, ',', ' ') . ' ₽',
+    '<b>Итого: ' . number_format($total, 0, ',', ' ') . ' ₽</b>',
+]);
 
 $remoteAddress = $_SERVER['REMOTE_ADDR'] ?? '';
 if (filter_var($remoteAddress, FILTER_VALIDATE_IP) === false) {
@@ -225,62 +277,6 @@ fclose($rateLimitFile);
 if (!$saved) {
     respond(500, ['ok' => false, 'message' => 'Unable to process order right now.']);
 }
-
-$configPath = __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
-if (!is_file($configPath)) {
-    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
-}
-
-$config = require $configPath;
-if (!is_array($config)) {
-    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
-}
-
-$botToken = $config['TELEGRAM_BOT_TOKEN'] ?? '';
-$chatId = $config['TELEGRAM_CHAT_ID'] ?? '';
-if (
-    !is_string($botToken)
-    || !preg_match('/^\d+:[A-Za-z0-9_-]+$/', $botToken)
-    || !is_string($chatId)
-    || !preg_match('/^-?\d+$/', $chatId)
-) {
-    respond(503, ['ok' => false, 'message' => 'Order notifications are not configured.']);
-}
-
-$pickupDiscount = $fulfillment === 'pickup' ? (int) round($subtotal * 0.10) : 0;
-$discountedSubtotal = $subtotal - $pickupDiscount;
-$promoDiscount = strtoupper(trim($promoCode)) === 'DRIPO15'
-    ? (int) round($discountedSubtotal * 0.15)
-    : 0;
-$total = $discountedSubtotal - $promoDiscount;
-
-$itemLines = [];
-foreach ($orderItems as $item) {
-    $line = '• ' . $item['name'];
-    if ($item['grind'] !== '') {
-        $line .= ', помол ' . $item['grind'];
-    }
-    $itemLines[] = $line . ' — ' . $item['quantity'] . ' шт. — '
-        . number_format($item['line_total'], 0, ',', ' ') . ' ₽';
-}
-
-$message = implode("\n", [
-    '<b>Новый заказ «Свежая Партия»</b>',
-    'Клиент: ' . $name,
-    'Телефон: ' . $phone,
-    '',
-    '<b>Состав заказа:</b>',
-    ...$itemLines,
-    $fulfillment === 'pickup'
-        ? 'Адрес кофейни: ' . htmlText('г. Москва, ул. Покровка, 24, стр. 2')
-        : 'Адрес доставки: ' . $address,
-    'Оплата: ' . ($payment === 'sbp' ? 'СБП (не оплачено)' : 'При получении'),
-    'Подтверждение: ' . ($messengerConfirmation ? 'написать в мессенджер' : 'позвонить'),
-    'Сумма товаров: ' . number_format($subtotal, 0, ',', ' ') . ' ₽',
-    'Скидка самовывоза: ' . number_format($pickupDiscount, 0, ',', ' ') . ' ₽',
-    'Скидка DRIPO15: ' . number_format($promoDiscount, 0, ',', ' ') . ' ₽',
-    '<b>Итого: ' . number_format($total, 0, ',', ' ') . ' ₽</b>',
-]);
 
 if (!function_exists('curl_init')) {
     respond(500, ['ok' => false, 'message' => 'Telegram transport is not available.']);
