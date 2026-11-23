@@ -846,6 +846,8 @@
     <script>
       lucide.createIcons({ attrs: { "stroke-width": 1.75 } });
 
+      const ORDER_MODE = "demo"; // "demo": данные никуда не уходят; "live": только на боевом PHP-хостинге
+
       function updateNextRoastDate() {
         const now = new Date();
         const roastDays = [2, 5];
@@ -1437,9 +1439,7 @@
       }
 
       async function sendOrderToServer() {
-        const isGitHubPages = window.location.hostname.endsWith(".github.io")
-          || window.location.hostname === "github.io";
-        if (window.location.protocol === "file:" || isGitHubPages) {
+        if (ORDER_MODE !== "live") {
           return { ok: true, demo: true };
         }
 
