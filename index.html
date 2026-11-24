@@ -851,6 +851,9 @@
 
       if (ORDER_MODE === "live") {
         document.querySelectorAll("[data-demo-only]").forEach((element) => element.remove());
+      } else {
+        document.querySelectorAll("[data-telegram-order], [data-telegram-share], [data-whatsapp-order]").forEach((element) => element.remove());
+        document.getElementById("messenger-transfer-title").textContent = "Демо: отправка в мессенджеры отключена";
       }
 
       function updateNextRoastDate() {
@@ -1438,9 +1441,11 @@
           ? "https://freshbatch.coffee"
           : `${window.location.origin}${window.location.pathname}`;
         document.querySelector("[data-message-preview]").textContent = orderReceiptMessage;
-        document.querySelector("[data-telegram-order]").href = `https://t.me/freshbatch_coffee?text=${encodedMessage}`;
-        document.querySelector("[data-telegram-share]").href = `https://t.me/share/url?url=${encodeURIComponent(orderSiteUrl)}&text=${encodedMessage}`;
-        document.querySelector("[data-whatsapp-order]").href = `https://wa.me/74950000000?text=${encodedMessage}`;
+        if (ORDER_MODE === "live") {
+          document.querySelector("[data-telegram-order]").href = `https://t.me/freshbatch_coffee?text=${encodedMessage}`;
+          document.querySelector("[data-telegram-share]").href = `https://t.me/share/url?url=${encodeURIComponent(orderSiteUrl)}&text=${encodedMessage}`;
+          document.querySelector("[data-whatsapp-order]").href = `https://wa.me/74950000000?text=${encodedMessage}`;
+        }
       }
 
       async function sendOrderToServer() {
