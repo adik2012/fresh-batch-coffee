@@ -27,4 +27,19 @@ const guarded =
   lines[first + 3] === "}";
 check('адреса мессенджеров выдаются только внутри if (ORDER_MODE === "live")', guarded);
 
+// Правило 3: в демо кнопки мессенджеров удаляются со страницы
+const removal = lines.findIndex(
+  (line) =>
+    line.includes("querySelectorAll") &&
+    line.includes("[data-telegram-order]") &&
+    line.includes("[data-telegram-share]") &&
+    line.includes("[data-whatsapp-order]")
+);
+check(
+  "в демо кнопки мессенджеров удаляются со страницы (ветка else)",
+  removal > 0 &&
+    lines[removal - 1] === "} else {" &&
+    lines[removal].endsWith(".forEach((element) => element.remove());")
+);
+
 process.exit(failed === 0 ? 0 : 1);
