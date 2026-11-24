@@ -90,5 +90,8 @@ check(
   "в демо функция отправки не вызывает fetch и возвращает demo: true",
   start >= 0 && end > start && error === null && fetchCalls === 0 && result?.demo === true
 );
+console.log(
+  `  детали: вызовов fetch = ${fetchCalls}, ошибка = ${error ? error.message : "нет"}, demo = ${result?.demo}`
+);
 
 process.exit(failed === 0 ? 0 : 1);
