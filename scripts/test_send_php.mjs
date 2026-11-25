@@ -60,4 +60,4 @@ check(
 check("ошибка действительно произошла и записана в журнал сервера", log.includes("leak_probe_undefined"));
 console.log(`  детали: ответ = ${JSON.stringify(body?.slice(0, 100))}`);
 
-process.exit(failed === 0 ? 0 : 1);
+process.exitCode = failed === 0 ? 0 : 1;
