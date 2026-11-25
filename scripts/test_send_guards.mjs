@@ -12,6 +12,8 @@ const mutations = {
   method: ["!== 'POST'", "=== 'NEVER'"],
   type: ["$contentType !== 'application/json'", "$contentType === 'NEVER'"],
   size: ["32768", "99999999"],
+  honeypot: ["if ($honeypot !== '') {", "if ($honeypot === 'NEVER') {"],
+  config: ["!is_file($configPath)", "false"],
 };
 
 let failed = 0;
@@ -77,6 +79,23 @@ check("POST не в формате JSON отклоняется (415)", plain?.st
 const big = await postJson({ name: "x".repeat(40000) });
 check("слишком большой запрос отклоняется (413)", big?.status === 413);
 
+const bot = await postJson({ website: "http://spam.example" });
+check("заполненная ловушка для ботов отклоняется (400)", bot?.status === 400);
+
+const validOrder = {
+  name: "Тест",
+  phone: "+7 (900) 000-00-00",
+  fulfillment: "pickup",
+  address: "",
+  payment: "on-receipt",
+  messenger_confirmation: true,
+  personal_data_consent: true,
+  promo_code: "",
+  items: [{ id: "ethiopia-irghacheff", quantity: 1, grind: "В зёрнах" }],
+};
+const noConfig = await postJson(validOrder);
+check("корректный заказ без config.php не отправляется (503)", noConfig?.status === 503);
+
 await new Promise((resolve) => {
   server.once("close", resolve);
   server.kill();
@@ -84,7 +103,7 @@ await new Promise((resolve) => {
 rmSync(dir, { recursive: true, force: true });
 
 console.log(
-  `  детали: GET → ${get?.status}, text/plain → ${plain?.status}, большой → ${big?.status}` +
+  `  детали: GET → ${get?.status}, text/plain → ${plain?.status}, большой → ${big?.status}, ловушка → ${bot?.status}, без конфига → ${noConfig?.status}` +
     (breakName ? ` (намеренно сломана защита: ${breakName})` : "")
 );
 process.exitCode = failed === 0 ? 0 : 1;
